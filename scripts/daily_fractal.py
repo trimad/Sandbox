@@ -79,6 +79,12 @@ def main():
     note_path = os.path.join(DOCS, f"{keyword}.md")
     rel_img = os.path.relpath(dest_png, DOCS)
     note = textwrap.dedent(f"""\
+    ---
+    tags:
+      - fractal
+      - {tag.split('/')[-1]}
+    ---
+
     # {name}
 
     ## Summary
@@ -102,12 +108,18 @@ def main():
     for k, v in params.items():
         note += f"    | {k} | {v} |\n"
     note += "\n## Coloring Techniques\n- log1p-mapped exposure\n\n"
-    note += "## C# Implementation Notes\n- Rendered via `Sandbox.exe` CLI\n"
+    note += "## C# Implementation Notes\n- Implemented as a standalone fractal class in `Fractals/`\n"
     if "bailout" in params:
         note += f"- Bailout set to {params['bailout']} to limit orbit tracing\n"
-    note += "\n## Interesting Coordinates or Presets\n\n"
-    note += f"![Rendered on {today.isoformat()}]({rel_img})\n"
-
+    note += "\n## Known Variations\n- Default viewport and parameters as defined in `fractal_queue.json`\n"
+    note += "\n## Interesting Coordinates or Presets\n"
+    note += f"![Rendered on {today.isoformat()}]({rel_img})\n\n"
+    note += "## Sources\n- Wikipedia: [Escape_time fractal](https://en.wikipedia.org/wiki/Escape-time_fractal)\n\n"
+    related = [q for q in queue if q["keyword"] != keyword][:3]
+    if related:
+        note += "## Related Notes\n"
+        for r in related:
+            note += f"- [[{r['keyword']}]]\n"
     with open(note_path, "w", encoding="utf-8") as f:
         f.write(note)
     print(f"Note written to {note_path}")

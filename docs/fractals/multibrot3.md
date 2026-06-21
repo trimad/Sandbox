@@ -1,3 +1,9 @@
+---
+tags:
+  - fractal
+  - multibrot
+---
+
 # Multibrot-3
 
 ## Summary
@@ -25,8 +31,18 @@ Escape-time algorithm on CPU with 1024×1024 resolution.
 - log1p-mapped exposure
 
 ## C# Implementation Notes
-- Rendered via `Sandbox.exe` CLI
+- Implemented as a standalone fractal class in `Fractals/`
+
+## Known Variations
+- Default viewport and parameters as defined in `fractal_queue.json`
 
 ## Interesting Coordinates or Presets
-
 ![Rendered on 2026-06-21](..\..\output\2026-06-21_multibrot3.png)
+
+## Sources
+- Wikipedia: [Escape_time fractal](https://en.wikipedia.org/wiki/Escape-time_fractal)
+
+## Related Notes
+- [[mandelbrot]]
+- [[julia]]
+- [[burningship]]

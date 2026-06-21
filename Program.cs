@@ -705,6 +705,26 @@ namespace Sandbox
                         fractal = new Mandelbrot(settings.Width, settings.Height, settings.Bailout, settings.Highest).Init(-1, 1, -1, 1);
                         hasFractalData = false;
                         break;
+                    case "burningship": //fractal
+                        fractal = new BurningShip(settings.Width, settings.Height, settings.Bailout, settings.Highest)
+                            .Init(-1.8, 1.8, -0.2, 1.8);
+                        hasFractalData = false;
+                        break;
+                    case "tricorn": //fractal
+                        fractal = new Tricorn(settings.Width, settings.Height, settings.Highest)
+                            .Init(-1.5, 1.5, -1.5, 1.5);
+                        hasFractalData = false;
+                        break;
+                    case "multibrot3": //fractal
+                        fractal = new Multibrot(settings.Width, settings.Height, settings.Highest, 3)
+                            .Init(-1.2, 1.2, -1.2, 1.2);
+                        hasFractalData = false;
+                        break;
+                    case "newton": //fractal
+                        fractal = new NewtonFractal(settings.Width, settings.Height, settings.Highest, 3)
+                            .Init(-1.5, 1.5, -1.5, 1.5);
+                        hasFractalData = false;
+                        break;
                     case "load":
                         fractal.LoadSettings("settings.json").LoadDistance("distance.dat").LoadExposure("exposure.dat").TryLoadFlow("flow.dat");
 
@@ -926,6 +946,10 @@ namespace Sandbox
                         Console.WriteLine(String.Format("{0,-24} {1}", "glynn", "Render the Glynn fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "julia", "Render the Julia fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "mandelbrot", "Render the Mandelbrot fractal"));
+                        Console.WriteLine(String.Format("{0,-24} {1}", "burningship", "Render the Burning Ship fractal"));
+                        Console.WriteLine(String.Format("{0,-24} {1}", "tricorn", "Render the Tricorn fractal"));
+                        Console.WriteLine(String.Format("{0,-24} {1}", "multibrot3", "Render the Multibrot 3 fractal"));
+                        Console.WriteLine(String.Format("{0,-24} {1}", "newton", "Render the Newton fractal (z^3-1)"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "logisticmap", "Render the logistic map"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "render/load/save/draw", "Core pipeline commands"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "all", "Render or load once, then save every shader output"));

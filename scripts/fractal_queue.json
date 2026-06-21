@@ -1,0 +1,74 @@
+[
+  {
+    "keyword": "mandelbrot",
+    "name": "Classic Mandelbrot Set",
+    "tag": "fractal/mandelbrot",
+    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 50},
+    "formula": "z_{n+1} = z_n^2 + c, \\quad z_0 = 0",
+    "summary": "The quintessential escape-time fractal. Points in the complex plane are tested for escape under repeated squaring. The boundary contains infinite detail.",
+    "notes": "Rendered with a bailout of 500 and exposure target of 50 using a log1p-mapped shader to reveal structure near the cardioid and period bulbs."
+  },
+  {
+    "keyword": "julia",
+    "name": "Julia Set",
+    "tag": "fractal/julia",
+    "params": {"width": 1024, "height": 1024, "highest": 100},
+    "formula": "z_{n+1} = z_n^2 + c, \\quad c = -0.75 + 0.156i",
+    "summary": "A connected Julia set for a parameter inside the Mandelbrot set. Shows dendritic filaments and spiral structure.",
+    "notes": "Fixed c = -0.75 + 0.156i gives a dendrite-like shape. Distance field shading highlights filament width."
+  },
+  {
+    "keyword": "burningship",
+    "name": "Burning Ship",
+    "tag": "fractal/burningship",
+    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 50},
+    "formula": "z_{n+1} = (|Re(z_n)| + i|Im(z_n)|)^2 + c",
+    "summary": "A variant that takes the absolute value of real and imaginary parts before squaring, producing fractal 'smoke' and ship-like shapes.",
+    "notes": "Default viewport spans nearly the full Burning Ship set. Smoothed distance estimate avoids banding."
+  },
+  {
+    "keyword": "tricorn",
+    "name": "Tricorn (Mandelbar)",
+    "tag": "fractal/tricorn",
+    "params": {"width": 1024, "height": 1024, "highest": 100},
+    "formula": "z_{n+1} = \\overline{z_n}^2 + c",
+    "summary": "The conjugate of the Mandelbrot iteration. It has a self-similar anti-holomorphic structure with three-fold symmetries.",
+    "notes": "Standard viewport centered at origin. Exposure shading reveals the central bulb and satellite copies."
+  },
+  {
+    "keyword": "multibrot3",
+    "name": "Multibrot-3",
+    "tag": "fractal/multibrot",
+    "params": {"width": 1024, "height": 1024, "highest": 50},
+    "formula": "z_{n+1} = z_n^3 + c",
+    "summary": "The degree-3 analogue of the Mandelbrot set. The main cardioid becomes a reentrant shape with three-fold symmetry.",
+    "notes": "Higher-power Mandelbrots have thinner filaments. A bailout of 500 captures enough orbit detail for clean shading."
+  },
+  {
+    "keyword": "newton",
+    "name": "Newton Fractal (z^3 - 1)",
+    "tag": "fractal/newton",
+    "params": {"width": 1024, "height": 1024, "highest": 50},
+    "formula": "z \\to z - \\frac{z^3 - 1}{3 z^2}",
+    "summary": "Basins of attraction for Newton's method applied to z^3 - 1 = 0. The three basins meet at the Julia set of the method.",
+    "notes": "Convergence tolerance set to 1e-8. Iteration count maps nicely to exposure; distance field emphasizes basin boundaries."
+  },
+  {
+    "keyword": "glynn",
+    "name": "Glynn Fractal",
+    "tag": "fractal/glynn",
+    "params": {"width": 1024, "height": 1024, "highest": 50},
+    "formula": "z_{n+1} = z_n^{1.5} - 0.2",
+    "summary": "A complex-analytic fractal with fractional exponent 1.5. Produces a tree-like structure with dense branching.",
+    "notes": "Viewport centered on the main tree. Logarithmic distance shading highlights fine branch tips."
+  },
+  {
+    "keyword": "logisticmap",
+    "name": "Logistic Map",
+    "tag": "fractal/logisticmap",
+    "params": {"width": 1024, "height": 1024, "highest": 100},
+    "formula": "x_{n+1} = r x_n (1 - x_n)",
+    "summary": "A one-dimensional chaotic map plotted in the (r, x) plane. Classic example of period-doubling route to chaos.",
+    "notes": "Full bifurcation diagram from r=2 to r=4. High exposure target captures transient chaotic bands."
+  }
+]

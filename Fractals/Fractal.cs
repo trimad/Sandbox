@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -10,15 +8,14 @@ namespace Sandbox.Fractals
 {
     public class Fractal : Shader
     {
-        internal int width, height;
         //internal int[] exposure, canvas;
         internal double aspectRatio;
         internal double[][][] domain;
         internal String name = "Fractal";
-        //internal String savePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Output");
-        internal String savePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        internal String savePath = @"C:\Fractals";
         internal DateTime t0 = DateTime.Now;
         internal TimeSpan TimeStamp { get => DateTime.Now - t0; }
+        const int DataFileChunkElements = 1_048_576;
 
         public Fractal() { }
 
@@ -112,6 +109,57 @@ namespace Sandbox.Fractals
 
         public virtual Fractal Render() { return this; }
 
+        private string FractalDirectory
+        {
+            get
+            {
+                string directoryName = name;
+                foreach (char invalidChar in Path.GetInvalidFileNameChars())
+                {
+                    directoryName = directoryName.Replace(invalidChar, '_');
+                }
+
+                return Path.Combine(savePath, directoryName);
+            }
+        }
+
+        private void EnsureSavePathExists()
+        {
+            Directory.CreateDirectory(FractalDirectory);
+        }
+
+        private string GetFractalPath(string fileName)
+        {
+            return Path.Combine(FractalDirectory, fileName);
+        }
+
+        private bool TryGetLoadPath(string fileName, out string path)
+        {
+            string fractalPath = GetFractalPath(fileName);
+            if (File.Exists(fractalPath))
+            {
+                path = fractalPath;
+                return true;
+            }
+
+            string legacyPath = Path.Combine(savePath, fileName);
+            if (File.Exists(legacyPath))
+            {
+                Console.WriteLine($"Using legacy save path: {legacyPath}");
+                path = legacyPath;
+                return true;
+            }
+
+            path = fractalPath;
+            return false;
+        }
+
+        private string GetLoadPath(string fileName)
+        {
+            TryGetLoadPath(fileName, out string path);
+            return path;
+        }
+
 
         public Fractal TransformExposure()
         {
@@ -123,83 +171,223 @@ namespace Sandbox.Fractals
             });
             return this;
         }
+
+        public Fractal ThresholdExposure(int minExposure)
+        {
+            if (minExposure <= 0 || exposure == null || exposure.Length == 0)
+            {
+                return this;
+            }
+
+            _ = Parallel.For(0, exposure.Length, i =>
+            {
+                if (exposure[i] < minExposure)
+                {
+                    exposure[i] = 0;
+                }
+            });
+
+            return this;
+        }
+
         public Fractal Draw()
         {
             Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod());
-            GCHandle bitsHandle = GCHandle.Alloc(canvas, GCHandleType.Pinned);
-            Bitmap image = new Bitmap(width, height, width * 4, PixelFormat.Format32bppArgb, bitsHandle.AddrOfPinnedObject());
-            string image_path = Path.Combine(savePath, name + ".png");
+            string image_path = GetFractalPath(name + ".png");
             Console.WriteLine(image_path);
-            Directory.CreateDirectory(savePath);
-            image.Save(image_path, ImageFormat.Png);
+            EnsureSavePathExists();
+            StreamingPngWriter.SaveArgbCanvas(image_path, canvas, width, height);
             return this;
         }
-        //public Fractal SaveImage(String s)
-        //{
-        //    Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod());
-        //    GCHandle bitsHandle = GCHandle.Alloc(canvas, GCHandleType.Pinned);
-        //    Bitmap image = new Bitmap(width, height, width * 4, PixelFormat.Format32bppArgb, bitsHandle.AddrOfPinnedObject());
-        //    string image_path = Path.Combine(savePath, s + ".png");
-        //    Console.WriteLine(image_path);
-        //    image.Save(image_path, ImageFormat.Png);
-        //    return this;
-        //}
+        public Fractal SaveImage(String s)
+        {
+            Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod());
+            string image_path = GetFractalPath(s + ".png");
+            Console.WriteLine(image_path);
+            EnsureSavePathExists();
+            StreamingPngWriter.SaveArgbCanvas(image_path, canvas, width, height);
+            return this;
+        }
         public Fractal SaveExposure(String name)
         {
             Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod());
-            string path = Path.Combine(savePath, name);
-            byte[] myFinalBytes = new byte[exposure.Length * 4];
-            for (int i = 0; i < exposure.Length; i++)
+            string path = GetFractalPath(name);
+            EnsureSavePathExists();
+            using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
             {
-                byte[] myBytes = BitConverter.GetBytes(exposure[i]);
-                Array.Copy(myBytes, 0, myFinalBytes, i * 4, 4);
+                for (int offset = 0; offset < exposure.Length; offset += DataFileChunkElements)
+                {
+                    int count = Math.Min(DataFileChunkElements, exposure.Length - offset);
+                    stream.Write(MemoryMarshal.AsBytes(exposure.AsSpan(offset, count)));
+                }
             }
-            File.WriteAllBytes(path, myFinalBytes);
             return this;
         }
         public Fractal LoadExposure(String name)
         {
             Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod());
-            string path = Path.Combine(savePath, name);
-            byte[] inputElements = File.ReadAllBytes(path);
-            exposure = new int[inputElements.Length / 4];
-            for (int i = 0; i < inputElements.Length; i += 4)
+            string path = GetLoadPath(name);
+            FileInfo fileInfo = new FileInfo(path);
+            if (fileInfo.Length % sizeof(int) != 0)
             {
-                exposure[i / 4] = BitConverter.ToInt32(inputElements, i);
+                throw new InvalidDataException($"Exposure data length is not divisible by {sizeof(int)} bytes: {path}");
+            }
+
+            long fileElementCount = fileInfo.Length / sizeof(int);
+            if (fileElementCount > int.MaxValue)
+            {
+                throw new InvalidDataException($"Exposure data is too large to fit in a single .NET array: {path}");
+            }
+
+            int elementCount = checked((int)fileElementCount);
+            exposure = new int[elementCount];
+            canvas = new int[elementCount];
+            using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                for (int offset = 0; offset < exposure.Length; offset += DataFileChunkElements)
+                {
+                    int count = Math.Min(DataFileChunkElements, exposure.Length - offset);
+                    stream.ReadExactly(MemoryMarshal.AsBytes(exposure.AsSpan(offset, count)));
+                }
             }
             return this;
         }
         public Fractal SaveDistance(String name)
         {
             Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod());
-            //int step = sizeof(double);
-            string path = Path.Combine(savePath, name);
-            byte[] myFinalBytes = new byte[distance.Length * sizeof(double)];
-            for (int i = 0; i < distance.Length; i++)
+            string path = GetFractalPath(name);
+            EnsureSavePathExists();
+            using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
             {
-                byte[] myBytes = BitConverter.GetBytes(distance[i]);
-                Array.Copy(myBytes, 0, myFinalBytes, i * sizeof(double), sizeof(double));
+                for (int offset = 0; offset < distance.Length; offset += DataFileChunkElements)
+                {
+                    int count = Math.Min(DataFileChunkElements, distance.Length - offset);
+                    stream.Write(MemoryMarshal.AsBytes(distance.AsSpan(offset, count)));
+                }
             }
-            File.WriteAllBytes(path, myFinalBytes);
             return this;
         }
         public Fractal LoadDistance(String name)
         {
             Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod());
-            string path = Path.Combine(savePath, name);
-            byte[] inputElements = File.ReadAllBytes(path);
-            distance = new double[inputElements.Length / sizeof(double)];
-            for (int i = 0; i < inputElements.Length; i += sizeof(double))
+            string path = GetLoadPath(name);
+            FileInfo fileInfo = new FileInfo(path);
+            if (fileInfo.Length % sizeof(double) != 0)
             {
+                throw new InvalidDataException($"Distance data length is not divisible by {sizeof(double)} bytes: {path}");
+            }
 
-                distance[i / sizeof(double)] = BitConverter.ToDouble(inputElements, i);
+            long fileElementCount = fileInfo.Length / sizeof(double);
+            if (fileElementCount > int.MaxValue)
+            {
+                throw new InvalidDataException($"Distance data is too large to fit in a single .NET array: {path}");
+            }
+
+            int elementCount = checked((int)fileElementCount);
+            distance = new double[elementCount];
+            canvas = new int[elementCount];
+            using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                for (int offset = 0; offset < distance.Length; offset += DataFileChunkElements)
+                {
+                    int count = Math.Min(DataFileChunkElements, distance.Length - offset);
+                    stream.ReadExactly(MemoryMarshal.AsBytes(distance.AsSpan(offset, count)));
+                }
             }
             return this;
         }
-        public Fractal SaveSettings(String name)
+
+        public Fractal SaveFlow(String name)
         {
             Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod());
-            string path = Path.Combine(savePath, name);
+            if (flowX == null || flowY == null || flowX.Length == 0)
+            {
+                return this;
+            }
+
+            if (flowX.Length != flowY.Length)
+            {
+                throw new InvalidDataException("Flow component arrays must have the same length.");
+            }
+
+            string path = GetFractalPath(name);
+            EnsureSavePathExists();
+            float[] chunk = new float[DataFileChunkElements * 2];
+            using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                for (int offset = 0; offset < flowX.Length; offset += DataFileChunkElements)
+                {
+                    int count = Math.Min(DataFileChunkElements, flowX.Length - offset);
+                    for (int i = 0; i < count; i++)
+                    {
+                        int sourceIndex = offset + i;
+                        int targetIndex = i * 2;
+                        chunk[targetIndex] = flowX[sourceIndex];
+                        chunk[targetIndex + 1] = flowY[sourceIndex];
+                    }
+
+                    stream.Write(MemoryMarshal.AsBytes(chunk.AsSpan(0, count * 2)));
+                }
+            }
+
+            return this;
+        }
+
+        public Fractal TryLoadFlow(String name)
+        {
+            Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod());
+            if (!TryGetLoadPath(name, out string path))
+            {
+                return this;
+            }
+
+            FileInfo fileInfo = new FileInfo(path);
+            int bytesPerPixel = sizeof(float) * 2;
+            if (fileInfo.Length % bytesPerPixel != 0)
+            {
+                throw new InvalidDataException($"Flow data length is not divisible by {bytesPerPixel} bytes: {path}");
+            }
+
+            long filePixelCount = fileInfo.Length / bytesPerPixel;
+            if (filePixelCount > int.MaxValue)
+            {
+                throw new InvalidDataException($"Flow data is too large to fit in a single .NET array: {path}");
+            }
+
+            int pixelCount = checked((int)filePixelCount);
+            if (width > 0 && height > 0)
+            {
+                int expectedPixelCount = checked(width * height);
+                if (pixelCount != expectedPixelCount)
+                {
+                    throw new InvalidDataException($"Flow data has {pixelCount} pixels, but settings expect {expectedPixelCount}: {path}");
+                }
+            }
+
+            flowX = new float[pixelCount];
+            flowY = new float[pixelCount];
+            float[] chunk = new float[DataFileChunkElements * 2];
+            using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                for (int offset = 0; offset < pixelCount; offset += DataFileChunkElements)
+                {
+                    int count = Math.Min(DataFileChunkElements, pixelCount - offset);
+                    stream.ReadExactly(MemoryMarshal.AsBytes(chunk.AsSpan(0, count * 2)));
+                    for (int i = 0; i < count; i++)
+                    {
+                        int sourceIndex = i * 2;
+                        int targetIndex = offset + i;
+                        flowX[targetIndex] = chunk[sourceIndex];
+                        flowY[targetIndex] = chunk[sourceIndex + 1];
+                    }
+                }
+            }
+
+            return this;
+        }
+
+        public Fractal SaveSettings(String name)
+        {
             Settings _data = new Settings()
             {
                 Name = this.name,
@@ -210,14 +398,23 @@ namespace Sandbox.Fractals
                 Width = this.width
             };
 
-            string json = JsonConvert.SerializeObject(_data);
+            return SaveSettings(name, _data);
+        }
+
+        public Fractal SaveSettings(String name, Settings data)
+        {
+            Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod());
+            string path = GetFractalPath(name);
+            EnsureSavePathExists();
+            string json = JsonConvert.SerializeObject(data);
             File.WriteAllText(path, json);
             return this;
         }
+
         public Fractal LoadSettings(String name)
         {
             Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod());
-            string path = Path.Combine(savePath, name);
+            string path = GetLoadPath(name);
             using (StreamReader file = File.OpenText(path))
             {
                 JsonSerializer serializer = new JsonSerializer();

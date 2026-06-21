@@ -1,16 +1,11 @@
-﻿using System;
+using System;
+using System.Security.Cryptography;
 using System.Threading;
-using Troschuetz.Random.Generators;
 
 namespace Sandbox.Fractals
 {
     public class Buddhabrot : Fractal
     {
-        [ThreadStatic]
-        static MT19937Generator rand = new MT19937Generator();
-        //static ALFGenerator rand = new ALFGenerator();
-        //static XorShift128Generator rand - new XorShift128Generator();
-
         readonly int cutoff, bailout;
         //Complex zero = new Complex(0, 0);
         public Buddhabrot(int _width, int _height, int _cutoff, int _bailout, int _highestExposureTarget)
@@ -46,24 +41,24 @@ namespace Sandbox.Fractals
 
         private void Plot()
         {
-            if (rand == null)
-            {
-                rand = new MT19937Generator();
-                //rand = new ALFGenerator();
-            }
+            byte[] randomBytes = new byte[8];
             while (highestActual < highestExposureTarget)
             {
-
-                double r = rand.NextDouble() * (domain[width - 1][0][0] - domain[0][0][0]) + domain[0][0][0];
-                double i = rand.NextDouble() * (domain[0][height - 1][1] - domain[0][0][1]) + domain[0][0][1];
+                double r = NextUnit(randomBytes) * (domain[width - 1][0][0] - domain[0][0][0]) + domain[0][0][0];
+                double i = NextUnit(randomBytes) * (domain[0][height - 1][1] - domain[0][0][1]) + domain[0][0][1];
 
                 if (Iterate(r, i, false))
                 {
                     Iterate(r, i, true);
                 }
-
             }
+        }
 
+        private static double NextUnit(byte[] buffer)
+        {
+            RandomNumberGenerator.Fill(buffer);
+            ulong value = BitConverter.ToUInt64(buffer, 0) >> 11;
+            return value * (1.0 / (1UL << 53));
         }
 
         private bool Iterate(double r, double i, bool drawIt)

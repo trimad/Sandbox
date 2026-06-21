@@ -30,7 +30,7 @@ namespace Sandbox
 
             double min = double.MaxValue;
             double max = double.MinValue;
-            _ = Parallel.For(0, arr.Length, i =>
+            for (int i = 0; i < arr.Length; i++)
             {
                 double x = arr[i];
                 if (x < min)
@@ -43,7 +43,7 @@ namespace Sandbox
                     max = x;
 
                 }
-            });
+            }
             //Console.WriteLine("min: " + min + "max: " + max);
             return new Tuple<double, double>(min, max);
         }
@@ -84,7 +84,7 @@ namespace Sandbox
             Console.WriteLine(System.Reflection.MethodBase.GetCurrentMethod());
             double min = double.MaxValue;
             double max = double.MinValue;
-            _ = Parallel.For(0, arr.Length, i =>
+            for (int i = 0; i < arr.Length; i++)
             {
                 double x = arr[i];
                 if (x < min)
@@ -97,7 +97,7 @@ namespace Sandbox
                     max = x;
 
                 }
-            });
+            }
             //Console.WriteLine("min: " + min + " | max: " + max);
             return new Tuple<double, double>(min, max);
         }
@@ -115,6 +115,10 @@ namespace Sandbox
         }
         public static double Normalize(double value, double min, double max)
         {
+            if (max == min)
+            {
+                return 0;
+            }
             if (value == 0)
             {
                 return value;

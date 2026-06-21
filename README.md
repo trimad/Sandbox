@@ -346,6 +346,20 @@ The default resolution is intentionally very large. For testing shaders or CLI b
 
 Some shaders allocate additional full-image buffers. Very large images can require substantial system RAM even after the GPU render is complete.
 
+## Daily Fractal Pipeline
+
+A scheduled cron job runs `scripts/daily_fractal.py` once per day. The script:
+- Picks today's fractal from `scripts/fractal_queue.json` (cycling by day-of-year)
+- Renders it on CPU with `width=1024 height=1024`
+- Copies the PNG to `output/`
+- Writes an Obsidian-style markdown note to `docs/fractals/`
+- Commits changes to Git
+
+To run the pipeline manually:
+```bash
+python scripts/daily_fractal.py
+```
+
 ## Code Layout
 
 Shared fractal save/load/draw behavior lives in `Fractals/Fractal.cs`.
@@ -355,3 +369,5 @@ Shared shader state and helper functions live in `Fractals/Shader.cs`.
 Each public shader algorithm lives in a separate partial class file under `Fractals/Shaders`.
 
 The GPU Buddhabrot implementations live in `Fractals/BuddhabrotGPU.cs` and `Fractals/BuddhabrotClassicGPU.cs`.
+
+New CPU fractal implementations (BurningShip, Tricorn, Multibrot, Newton) are in their own files under `Fractals/`.

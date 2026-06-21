@@ -47,8 +47,6 @@ def main():
     print(f"Params: {params}")
 
     env = os.environ.copy()
-    env["PATH"] = r"C:\Program Files\dotnet;" + env.get("PATH", "")
-    # Ensure the cwd is the repo so paths like C:\Fractals resolve predictably
     result = subprocess.run(args, cwd=REPO, env=env, capture_output=True, text=True)
     print(result.stdout)
     if result.returncode != 0:
@@ -119,8 +117,11 @@ def main():
     msg = f"Daily fractal: {name} ({today.isoformat()})"
     commit = subprocess.run(["git", "commit", "-m", msg], cwd=REPO, capture_output=True, text=True)
     if commit.returncode == 0:
-        subprocess.run(["git", "push"], cwd=REPO)
-        print(f"Committed and pushed: {msg}")
+        push = subprocess.run(["git", "push"], cwd=REPO, capture_output=True, text=True, timeout=120)
+        if push.returncode == 0:
+            print(f"Committed and pushed: {msg}")
+        else:
+            print(f"Committed but push failed: {push.stderr.strip()}")
     else:
         print(f"No changes to commit or commit failed: {commit.stderr.strip()}")
     return 0

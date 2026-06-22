@@ -71,13 +71,17 @@ def main():
         return 1
 
     dest_png = os.path.join(OUT, f"{today.isoformat()}_{keyword}.png")
-    src_png = candidates[-1]
+    # Use the most recently written local renderer output, not an arbitrary
+    # directory-listing result, so the Obsidian post embeds this run's picture.
+    src_png = max(candidates, key=os.path.getmtime)
     shutil.copy2(src_png, dest_png)
     print(f"PNG copied to {dest_png}")
 
-    # Write / update Obsidian-style note
+    # Write / update Obsidian-style note. Obsidian understands normal Markdown
+    # image embeds; normalize to forward slashes so the link renders consistently
+    # across Windows Obsidian, GitHub, and other Markdown viewers.
     note_path = os.path.join(DOCS, f"{keyword}.md")
-    rel_img = os.path.relpath(dest_png, DOCS)
+    rel_img = os.path.relpath(dest_png, DOCS).replace(os.sep, "/")
     note = textwrap.dedent(f"""\
     ---
     tags:

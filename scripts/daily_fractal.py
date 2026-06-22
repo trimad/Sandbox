@@ -128,16 +128,34 @@ def main():
         f.write(note)
     print(f"Note written to {note_path}")
 
-    # Git add / commit / push
-    subprocess.run(["git", "add", "docs/", "output/", "scripts/", "Fractals/", "Program.cs"], cwd=REPO)
+    # Git add / commit / push. Cron runs without a human at the terminal, so
+    # disable interactive credential prompts; otherwise Git Credential Manager
+    # can hang the scheduled run indefinitely while waiting for UI input.
+    git_env = env.copy()
+    git_env["GIT_TERMINAL_PROMPT"] = "0"
+    git_env["GCM_INTERACTIVE"] = "Never"
+
+    subprocess.run(["git", "add", "docs/", "output/", "scripts/", "Fractals/", "Program.cs"], cwd=REPO, env=git_env)
     msg = f"Daily fractal: {name} ({today.isoformat()})"
-    commit = subprocess.run(["git", "commit", "-m", msg], cwd=REPO, capture_output=True, text=True)
+    commit = subprocess.run(["git", "commit", "-m", msg], cwd=REPO, env=git_env, capture_output=True, text=True)
     if commit.returncode == 0:
-        push = subprocess.run(["git", "push"], cwd=REPO, capture_output=True, text=True, timeout=120)
-        if push.returncode == 0:
-            print(f"Committed and pushed: {msg}")
+        try:
+            push = subprocess.run(
+                ["git", "-c", "credential.interactive=false", "push"],
+                cwd=REPO,
+                env=git_env,
+                capture_output=True,
+                text=True,
+                timeout=120,
+            )
+        except subprocess.TimeoutExpired:
+            print("Committed but push timed out after 120 seconds; not retrying.")
         else:
-            print(f"Committed but push failed: {push.stderr.strip()}")
+            if push.returncode == 0:
+                print(f"Committed and pushed: {msg}")
+            else:
+                push_error = (push.stderr or push.stdout).strip()
+                print(f"Committed but push failed: {push_error}")
     else:
         print(f"No changes to commit or commit failed: {commit.stderr.strip()}")
     return 0

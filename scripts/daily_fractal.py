@@ -17,9 +17,11 @@ EXE = os.path.join(REPO, r"bin\Debug\net10.0-windows\Sandbox.exe")
 QUEUE = os.path.join(REPO, "scripts", "fractal_queue.json")
 DOCS = os.path.join(REPO, "docs", "fractals")
 OUT = os.path.join(REPO, "output")
+FRACTAL_ROOT = os.path.join(OUT, "fractals")
 
 os.makedirs(DOCS, exist_ok=True)
 os.makedirs(OUT, exist_ok=True)
+os.makedirs(FRACTAL_ROOT, exist_ok=True)
 
 def main():
     with open(QUEUE, "r", encoding="utf-8") as f:
@@ -56,18 +58,17 @@ def main():
     print("RENDER OK")
 
     # Find the generated PNG
-    fractal_root = r"C:\Fractals"
     candidates = []
-    if os.path.isdir(fractal_root):
-        for dir_name in os.listdir(fractal_root):
-            full_dir = os.path.join(fractal_root, dir_name)
+    if os.path.isdir(FRACTAL_ROOT):
+        for dir_name in os.listdir(FRACTAL_ROOT):
+            full_dir = os.path.join(FRACTAL_ROOT, dir_name)
             if not os.path.isdir(full_dir):
                 continue
             for fname in os.listdir(full_dir):
                 if fname.lower().endswith(".png"):
                     candidates.append(os.path.join(full_dir, fname))
     if not candidates:
-        print(f"No PNG found under {fractal_root}")
+        print(f"No PNG found under {FRACTAL_ROOT}")
         return 1
 
     dest_png = os.path.join(OUT, f"{today.isoformat()}_{keyword}.png")

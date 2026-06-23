@@ -702,7 +702,8 @@ namespace Sandbox
                         hasFractalData = false;
                         break;
                     case "mandelbrot": //fractal
-                        fractal = new Mandelbrot(settings.Width, settings.Height, settings.Bailout, settings.Highest).Init(-1, 1, -1, 1);
+                        fractal = new Mandelbrot(settings.Width, settings.Height, settings.Bailout, settings.Highest)
+                            .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
                         hasFractalData = false;
                         break;
                     case "burningship": //fractal

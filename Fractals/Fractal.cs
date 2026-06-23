@@ -12,10 +12,26 @@ namespace Sandbox.Fractals
         internal double aspectRatio;
         internal double[][][] domain;
         internal String name = "Fractal";
-        internal String savePath = @"C:\Fractals";
+        internal String savePath = Path.Combine(ResolveSandboxRoot(), "output", "fractals");
         internal DateTime t0 = DateTime.Now;
         internal TimeSpan TimeStamp { get => DateTime.Now - t0; }
         const int DataFileChunkElements = 1_048_576;
+
+        private static string ResolveSandboxRoot()
+        {
+            DirectoryInfo directory = new DirectoryInfo(AppContext.BaseDirectory);
+            while (directory != null)
+            {
+                if (File.Exists(Path.Combine(directory.FullName, "Sandbox.csproj")))
+                {
+                    return directory.FullName;
+                }
+
+                directory = directory.Parent;
+            }
+
+            return AppContext.BaseDirectory;
+        }
 
         public Fractal() { }
 

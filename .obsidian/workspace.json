@@ -11,14 +11,12 @@
             "id": "2360e4699b8faae4",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "docs/fractals/magnet1.md",
-                "mode": "source",
-                "source": false
+                "file": "output/2026-06-21_magnet1.png"
               },
-              "icon": "lucide-file",
-              "title": "magnet1"
+              "icon": "lucide-image",
+              "title": "2026-06-21_magnet1"
             }
           }
         ]
@@ -185,12 +183,13 @@
   },
   "active": "2360e4699b8faae4",
   "lastOpenFiles": [
+    "output/2026-06-21_multibrot3.png",
+    "output/2026-06-22_newton.png",
+    "output/fractals/NewtonFractal/NewtonFractal.png",
+    "docs/fractals/magnet1.md",
     "docs/fractals/newton.md",
     "docs/fractals/multibrot3.md",
     "output/2026-06-21_magnet1.png",
-    "output/2026-06-21_multibrot3.png",
-    "output/2026-06-22_newton.png",
-    "docs/fractals/magnet1.md",
     "obj/Debug/net10.0-windows/gbno13pg.pfx~",
     "obj/Debug/net10.0-windows/4ry1esye.1oy~",
     "Fractals/MagnetType1.cs",

@@ -1,6 +1,6 @@
 # Fractal Sandbox
 
-Fractal Sandbox is a command-line fractal renderer for Windows/.NET. It renders fractal data into `exposure.dat`, `distance.dat`, and optional flow-field data, applies shader keywords to generate a canvas, and writes PNG output under `C:\Fractals\<FractalName>`.
+Fractal Sandbox is a command-line fractal renderer for Windows/.NET. It renders fractal data into `exposure.dat`, `distance.dat`, and optional flow-field data, applies shader keywords to generate a canvas, and writes PNG output under `output\fractals\<FractalName>`.
 
 ## Quick Start
 
@@ -64,14 +64,14 @@ These keywords select the fractal implementation and initialize its hard-coded d
 
 | Keyword | Output Folder | Notes |
 | --- | --- | --- |
-| `buddhabrot` | `C:\Fractals\Buddhabrot` | CPU Buddhabrot renderer. Uses `width`, `height`, `cutoff`, `bailout`, and `highest`. |
-| `buddhabrot-gpu` | `C:\Fractals\Buddhabrot-GPU` | ILGPU/CUDA Buddhabrot renderer for NVIDIA GPUs. Uses `width`, `height`, `cutoff`, `bailout`, `highest`, and `gpu-progress-interval`. |
-| `buddhabrot-primes-gpu` | `C:\Fractals\Buddhabrot-Primes-GPU` | ILGPU/CUDA Buddhabrot renderer that only uses prime-length escape orbits up to `1613`. Uses `width`, `height`, `cutoff`, `bailout`, `highest`, and `gpu-progress-interval`. |
-| `buddhabrot-coverage` | `C:\Fractals\Buddhabrot-Coverage` | CPU Buddhabrot renderer that stops when a percentage of pixels have at least one hit. Uses `width`, `height`, `cutoff`, `bailout`, and `coverage`. |
-| `glynn` | `C:\Fractals\Glynn` | Glynn fractal. Uses `width`, `height`, and `highest`. |
-| `julia` | `C:\Fractals\Julia` | Julia fractal. Uses `width`, `height`, and `highest`. |
-| `mandelbrot` | `C:\Fractals\Mandelbrot` | Mandelbrot fractal. Uses `width`, `height`, `bailout`, and `highest`. |
-| `logisticmap` | `C:\Fractals\LogisticMap` | Logistic map render. Uses `width`, `height`, and `highest`. |
+| `buddhabrot` | `output\fractals\Buddhabrot` | CPU Buddhabrot renderer. Uses `width`, `height`, `cutoff`, `bailout`, and `highest`. |
+| `buddhabrot-gpu` | `output\fractals\Buddhabrot-GPU` | ILGPU/CUDA Buddhabrot renderer for NVIDIA GPUs. Uses `width`, `height`, `cutoff`, `bailout`, `highest`, and `gpu-progress-interval`. |
+| `buddhabrot-primes-gpu` | `output\fractals\Buddhabrot-Primes-GPU` | ILGPU/CUDA Buddhabrot renderer that only uses prime-length escape orbits up to `1613`. Uses `width`, `height`, `cutoff`, `bailout`, `highest`, and `gpu-progress-interval`. |
+| `buddhabrot-coverage` | `output\fractals\Buddhabrot-Coverage` | CPU Buddhabrot renderer that stops when a percentage of pixels have at least one hit. Uses `width`, `height`, `cutoff`, `bailout`, and `coverage`. |
+| `glynn` | `output\fractals\Glynn` | Glynn fractal. Uses `width`, `height`, and `highest`. |
+| `julia` | `output\fractals\Julia` | Julia fractal. Uses `width`, `height`, and `highest`. |
+| `mandelbrot` | `output\fractals\Mandelbrot` | Mandelbrot fractal. Uses `width`, `height`, `bailout`, and `highest`. |
+| `logisticmap` | `output\fractals\LogisticMap` | Logistic map render. Uses `width`, `height`, and `highest`. |
 
 `buddhabrot-gpu` requires a working NVIDIA CUDA driver/runtime. It prints the detected NVIDIA GPU name and the ILGPU accelerator name when rendering.
 
@@ -80,9 +80,9 @@ These keywords select the fractal implementation and initialize its hard-coded d
 | Command | Behavior |
 | --- | --- |
 | `render` | Render the selected fractal into memory. If the GPU backend cannot start, the command prints the setup error and exits. |
-| `load` | Load `settings.json`, `distance.dat`, `exposure.dat`, and optional `flow.dat` for the selected fractal. It checks `C:\Fractals\<FractalName>` first, then falls back to legacy root files under `C:\Fractals`. |
-| `save` | Save `settings.json`, `distance.dat`, `exposure.dat`, and any available `flow.dat` for the selected fractal under `C:\Fractals\<FractalName>`. |
-| `draw` | Save the current canvas as `C:\Fractals\<FractalName>\<FractalName>.png`. |
+| `load` | Load `settings.json`, `distance.dat`, `exposure.dat`, and optional `flow.dat` for the selected fractal. It checks `output\fractals\<FractalName>` first, then falls back to root files under `output\fractals`. |
+| `save` | Save `settings.json`, `distance.dat`, `exposure.dat`, and any available `flow.dat` for the selected fractal under `output\fractals\<FractalName>`. |
+| `draw` | Save the current canvas as `output\fractals\<FractalName>\<FractalName>.png`. |
 | `all` | Render first if needed, then apply every shader keyword in the built-in comparison list and save one PNG per shader. |
 | `/?` | Print the quick help menu and shader list. |
 
@@ -130,7 +130,7 @@ Explicit CLI settings override environment defaults.
 All current saves go under:
 
 ```text
-C:\Fractals\<FractalName>
+output\fractals\<FractalName>
 ```
 
 Core data files:

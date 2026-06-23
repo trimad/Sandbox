@@ -56,6 +56,9 @@ project.lock.json
 project.fragment.lock.json
 artifacts/
 
+# Fractal renderer data files stay local under the repo; daily pipeline copies selected PNGs to output/ root for commits.
+output/fractals/
+
 # StyleCop
 StyleCopReport.xml
 

@@ -34,13 +34,16 @@ Escape-time algorithm on CPU with 1024×1024 resolution.
 - Implemented as a standalone fractal class in `Fractals/`
 
 ## Known Variations
-- Default viewport and parameters as defined in `fractal_queue.json`
+- Bifurcation diagram: plot long-run sampled `x_n` values against the control parameter `r`.
+- Lyapunov exponent diagram: color regions by sensitivity to initial conditions.
+- Parameter-map variants: change the sampled seed `x_0`, discard count, or accumulation window to expose different periodic bands.
 
 ## Interesting Coordinates or Presets
 ![Rendered on 2026-06-24](../../output/2026-06-24_logisticmap.png)
 
 ## Sources
-- Wikipedia: [Escape_time fractal](https://en.wikipedia.org/wiki/Escape-time_fractal)
+- Wikipedia: [Logistic map](https://en.wikipedia.org/wiki/Logistic_map)
+- Wikipedia: [Bifurcation diagram](https://en.wikipedia.org/wiki/Bifurcation_diagram)
 
 ## Related Notes
 - [[mandelbrot]]

@@ -11,12 +11,14 @@
             "id": "2360e4699b8faae4",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "output/2026-06-21_magnet1.png"
+                "file": "docs/fractals/newton.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "2026-06-21_magnet1"
+              "icon": "lucide-file",
+              "title": "newton"
             }
           }
         ]
@@ -183,13 +185,18 @@
   },
   "active": "2360e4699b8faae4",
   "lastOpenFiles": [
+    "output/2026-06-24_logisticmap.png",
+    "output/fractals/Glynn Set/Glynn Set.png",
+    "output/2026-06-21_magnet1.png",
     "output/2026-06-21_multibrot3.png",
     "output/2026-06-22_newton.png",
-    "output/fractals/NewtonFractal/NewtonFractal.png",
-    "docs/fractals/magnet1.md",
+    "output/2026-06-23_glynn.png",
     "docs/fractals/newton.md",
     "docs/fractals/multibrot3.md",
-    "output/2026-06-21_magnet1.png",
+    "docs/fractals/magnet1.md",
+    "docs/fractals/logisticmap.md",
+    "docs/fractals/glynn.md",
+    "output/fractals/NewtonFractal/NewtonFractal.png",
     "obj/Debug/net10.0-windows/gbno13pg.pfx~",
     "obj/Debug/net10.0-windows/4ry1esye.1oy~",
     "Fractals/MagnetType1.cs",

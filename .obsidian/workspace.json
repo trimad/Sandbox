@@ -11,14 +11,12 @@
             "id": "2360e4699b8faae4",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "docs/fractals/newton.md",
-                "mode": "source",
-                "source": false
+                "file": "output/fractals/Mandelbrot/Mandelbrot.png"
               },
-              "icon": "lucide-file",
-              "title": "newton"
+              "icon": "lucide-image",
+              "title": "Mandelbrot"
             }
           }
         ]
@@ -185,14 +183,16 @@
   },
   "active": "2360e4699b8faae4",
   "lastOpenFiles": [
-    "output/2026-06-24_logisticmap.png",
-    "output/fractals/Glynn Set/Glynn Set.png",
     "output/2026-06-21_magnet1.png",
-    "output/2026-06-21_multibrot3.png",
     "output/2026-06-22_newton.png",
+    "output/2026-06-25_mandelbrot.png",
+    "output/2026-06-24_logisticmap.png",
     "output/2026-06-23_glynn.png",
-    "docs/fractals/newton.md",
+    "docs/fractals/mandelbrot.md",
     "docs/fractals/multibrot3.md",
+    "output/2026-06-21_multibrot3.png",
+    "docs/fractals/newton.md",
+    "output/fractals/Glynn Set/Glynn Set.png",
     "docs/fractals/magnet1.md",
     "docs/fractals/logisticmap.md",
     "docs/fractals/glynn.md",

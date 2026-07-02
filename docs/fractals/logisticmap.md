@@ -34,13 +34,17 @@ Escape-time algorithm on CPU with 1024×1024 resolution.
 - Implemented as a standalone fractal class in `Fractals/`
 
 ## Known Variations
-- Default viewport and parameters as defined in `fractal_queue.json`
+- Bifurcation diagram: plot long-term `x` values against growth rate `r` after discarding transients.
+- Cobweb plot: iterate a single seed against the curve `f(x) = r x (1 - x)` to show convergence, cycles, or chaos.
+- Parameter sweeps can vary initial seed, transient skip count, and iteration count to reveal period-doubling windows.
 
 ## Interesting Coordinates or Presets
 ![Rendered on 2026-07-02](../../output/2026-07-02_logisticmap.png)
 
 ## Sources
-- Wikipedia: [Escape_time fractal](https://en.wikipedia.org/wiki/Escape-time_fractal)
+- Wikipedia: [Logistic map](https://en.wikipedia.org/wiki/Logistic_map)
+- Wikipedia: [Bifurcation diagram](https://en.wikipedia.org/wiki/Bifurcation_diagram)
+- Wikipedia: [Escape-time fractal](https://en.wikipedia.org/wiki/Escape-time_fractal)
 
 ## Related Notes
 - [[mandelbrot]]

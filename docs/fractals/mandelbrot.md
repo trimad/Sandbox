@@ -39,7 +39,7 @@ Escape-time algorithm on CPU with 1024×1024 resolution.
 - Default viewport and parameters as defined in `fractal_queue.json`
 
 ## Interesting Coordinates or Presets
-![Rendered on 2026-06-25](../../output/2026-06-25_mandelbrot.png)
+![Rendered on 2026-07-03](../../output/2026-07-03_mandelbrot.png)
 
 ## Sources
 - Wikipedia: [Escape_time fractal](https://en.wikipedia.org/wiki/Escape-time_fractal)

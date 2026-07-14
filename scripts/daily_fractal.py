@@ -2,9 +2,13 @@
 """
 Daily Fractal Pipeline for Fractalnaut.
 
-Picks a fractal from the queue by day-of-year, renders it on CPU,
+Picks the next not-yet-cataloged fractal from the queue, renders it on CPU,
 creates an Obsidian-style markdown note, and commits the result to GitHub.
+
+Duplicate guard: existing docs/fractals/<keyword>.md files are treated as already
+cataloged, so the pipeline skips them instead of overwriting old notes/renders.
 """
+import argparse
 import json
 import os
 import subprocess
@@ -23,33 +27,89 @@ os.makedirs(DOCS, exist_ok=True)
 os.makedirs(OUT, exist_ok=True)
 os.makedirs(FRACTAL_ROOT, exist_ok=True)
 
-def main():
+def load_queue():
     with open(QUEUE, "r", encoding="utf-8") as f:
-        queue = json.load(f)
+        return json.load(f)
 
+
+def cataloged_keywords(docs_dir=DOCS):
+    """Return lower-case keywords that already have Obsidian notes."""
+    if not os.path.isdir(docs_dir):
+        return set()
+    return {
+        os.path.splitext(name)[0].lower()
+        for name in os.listdir(docs_dir)
+        if name.lower().endswith(".md")
+    }
+
+
+def select_uncataloged_entry(queue, today=None, cataloged=None):
+    """Cycle from today's slot until a queue entry without a note is found."""
+    if not queue:
+        raise ValueError("fractal_queue.json is empty")
+
+    today = today or date.today()
+    cataloged = cataloged if cataloged is not None else cataloged_keywords()
+    start = today.timetuple().tm_yday % len(queue)
+    skipped = []
+
+    for offset in range(len(queue)):
+        idx = (start + offset) % len(queue)
+        entry = queue[idx]
+        keyword = entry["keyword"].lower()
+        if keyword in cataloged:
+            skipped.append(entry["keyword"])
+            continue
+        return entry, skipped
+
+    return None, skipped
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description="Render the next uncataloged queued fractal.")
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="select and report the next fractal without rendering, writing, committing, or pushing",
+    )
+    args = parser.parse_args(argv)
+
+    queue = load_queue()
     today = date.today()
-    idx = today.timetuple().tm_yday % len(queue)
-    entry = queue[idx]
+    cataloged = cataloged_keywords()
+    entry, skipped = select_uncataloged_entry(queue, today=today, cataloged=cataloged)
+
+    if skipped:
+        print("Skipped already cataloged queue entries: " + ", ".join(skipped))
+
+    if entry is None:
+        print("No uncataloged fractals remain in scripts/fractal_queue.json.")
+        print("Add new queue entries before running the daily pipeline again.")
+        return 2
+
     keyword = entry["keyword"]
     name = entry["name"]
     tag = entry["tag"]
     params = entry["params"]
     formula = entry["formula"]
     summary = entry["summary"]
-    notes = entry["notes"]
 
     # Build CLI args
-    args = [EXE, keyword]
+    render_args = [EXE, keyword]
     for k, v in params.items():
-        args.append(f"{k}={v}")
-    args += ["render", "save", "log1p-mapped", "draw"]
+        render_args.append(f"{k}={v}")
+    render_args += ["render", "save", "log1p-mapped", "draw"]
 
     print(f"=== Daily Fractal: {name} ===")
     print(f"Keyword: {keyword}")
     print(f"Params: {params}")
 
+    if args.dry_run:
+        print("Dry run: duplicate guard and selection completed; no render/write/commit/push performed.")
+        return 0
+
     env = os.environ.copy()
-    result = subprocess.run(args, cwd=REPO, env=env, capture_output=True, text=True)
+    result = subprocess.run(render_args, cwd=REPO, env=env, capture_output=True, text=True)
     print(result.stdout)
     if result.returncode != 0:
         print("RENDER FAILED")
@@ -78,9 +138,8 @@ def main():
     shutil.copy2(src_png, dest_png)
     print(f"PNG copied to {dest_png}")
 
-    # Write / update Obsidian-style note. Obsidian understands normal Markdown
-    # image embeds; normalize to forward slashes so the link renders consistently
-    # across Windows Obsidian, GitHub, and other Markdown viewers.
+    # Write / update Obsidian-style note. The duplicate guard above prevents
+    # overwriting notes for already cataloged queue entries during daily runs.
     note_path = os.path.join(DOCS, f"{keyword}.md")
     rel_img = os.path.relpath(dest_png, DOCS).replace(os.sep, "/")
     note = textwrap.dedent(f"""\

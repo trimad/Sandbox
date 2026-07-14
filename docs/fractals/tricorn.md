@@ -34,13 +34,19 @@ Escape-time algorithm on CPU with 1024×1024 resolution.
 - Implemented as a standalone fractal class in `Fractals/`
 
 ## Known Variations
+- Multicorn family: replaces the exponent 2 with higher powers in `z_{n+1} = \overline{z_n}^d + c`.
+- Tricorn / Mandelbar Julia sets: fix `c` and iterate the conjugated quadratic map for each starting point.
 - Default viewport and parameters as defined in `fractal_queue.json`
+
+## Antiholomorphic Notes
+Unlike the Mandelbrot set's holomorphic quadratic map, the Tricorn uses complex conjugation before squaring. This changes the symmetry and boundary structure, making it a useful comparison target for [[Mandelbrot Set]] renderers and smooth-coloring experiments.
 
 ## Interesting Coordinates or Presets
 ![Rendered on 2026-07-14](../../output/2026-07-14_tricorn.png)
 
 ## Sources
-- Wikipedia: [Escape_time fractal](https://en.wikipedia.org/wiki/Escape-time_fractal)
+- Wikipedia: [Tricorn (mathematics)](https://en.wikipedia.org/wiki/Tricorn_(mathematics))
+- Wikipedia: [Escape-time fractal](https://en.wikipedia.org/wiki/Escape-time_fractal)
 
 ## Related Notes
 - [[mandelbrot]]

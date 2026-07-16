@@ -70,5 +70,14 @@
     "formula": "x_{n+1} = r x_n (1 - x_n)",
     "summary": "A one-dimensional chaotic map plotted in the (r, x) plane. Classic example of period-doubling route to chaos.",
     "notes": "Full bifurcation diagram from r=2 to r=4. High exposure target captures transient chaotic bands."
+  },
+  {
+    "keyword": "buddhabrot",
+    "name": "Buddhabrot",
+    "tag": "fractal/buddhabrot",
+    "params": {"width": 512, "height": 512, "cutoff": 20, "bailout": 600, "highest": 35},
+    "formula": "z_{n+1} = z_n^2 + c, \\quad z_0 = 0; plot escaping orbit points instead of parameter points",
+    "summary": "A trajectory-density rendering of the Mandelbrot iteration. Instead of coloring c directly, it accumulates the paths of escaping orbits, revealing ghostly basin structure around the Mandelbrot set.",
+    "notes": "Stochastic CPU render with modest exposure target for the daily run. Lower cutoff suppresses early orbit points while preserving the characteristic nebula-like density field."
   }
 ]

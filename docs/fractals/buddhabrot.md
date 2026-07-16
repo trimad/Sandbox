@@ -15,10 +15,10 @@ z_{n+1} = z_n^2 + c, \quad z_0 = 0; plot escaping orbit points instead of parame
 ```
 
 ## Mathematical Background
-A trajectory-density rendering of the Mandelbrot iteration. Instead of coloring c directly, it accumulates the paths of escaping orbits, revealing ghostly basin structure around the Mandelbrot set.
+The Buddhabrot is a nonstandard visualization of the Mandelbrot iteration introduced by Melinda Green. For each sampled parameter `c`, the renderer first checks whether the orbit escapes; if it does, the visited `z` positions are accumulated into an image-space exposure buffer. Bright regions therefore show where many escaping trajectories pass, not where parameter values themselves lie.
 
 ## Rendering Method
-Escape-time algorithm on CPU with 512×512 resolution.
+Escape-time algorithm on CPU with 512×512 resolution. This daily preset samples random `c` values in the standard ±2 complex-plane window, discards the first 20 orbit steps as a cutoff, follows escaping paths for up to 600 iterations, and stops when the exposure target reaches 35.
 
 ## Parameters
 | Setting | Value |
@@ -43,7 +43,9 @@ Escape-time algorithm on CPU with 512×512 resolution.
 ![Rendered on 2026-07-16](../../output/2026-07-16_buddhabrot.png)
 
 ## Sources
-- Wikipedia: [Escape_time fractal](https://en.wikipedia.org/wiki/Escape-time_fractal)
+- Melinda Green: [The Buddhabrot Technique](https://superliminal.com/fractals/bbrot/)
+- Wikipedia: [Buddhabrot](https://en.wikipedia.org/wiki/Buddhabrot)
+- Wikipedia: [Escape-time fractal](https://en.wikipedia.org/wiki/Escape-time_fractal)
 
 ## Related Notes
 - [[mandelbrot]]

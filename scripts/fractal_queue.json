@@ -88,5 +88,14 @@
     "formula": "z_{n+1} = z_n^2 + c, \\quad z_0 = 0; accumulate escaping orbit points until a target percentage of pixels is hit",
     "summary": "A Buddhabrot rendering variant that keeps sampling escaping Mandelbrot orbits until a specified image-coverage target is reached, making the stopping condition density-driven rather than exposure-driven.",
     "notes": "Daily preset uses a modest 5% coverage target at 512×512 resolution to keep the stochastic CPU render bounded while still revealing the familiar nebula-like orbit-density structure."
+  },
+  {
+    "keyword": "magnet2",
+    "name": "Magnet Type II Fractal",
+    "tag": "fractal/magnet",
+    "params": {"width": 1024, "height": 1024, "bailout": 250, "highest": 250, "min-real": -2.25, "max-real": 2.25, "min-imaginary": -2.25, "max-imaginary": 2.25},
+    "formula": "z_{n+1} = ((z_n^3 + 3(c - 1)z_n + (c - 1)(c - 2)) / (3z_n^2 + 3(c - 2)z_n + (c - 1)(c - 2) + 1))^2, \\quad z_0 = 0",
+    "summary": "A higher-degree rational-map magnet fractal. Points in the parameter plane are iterated toward the attracting fixed point z = 1, with poles and basin boundaries producing dense circular filigree.",
+    "notes": "Full symmetric parameter-plane viewport. The rational denominator creates sharp singular structures, so guarded division and convergence checks are used during CPU rendering."
   }
 ]

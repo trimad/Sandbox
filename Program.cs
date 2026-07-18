@@ -731,6 +731,11 @@ namespace Sandbox
                             .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
                         hasFractalData = false;
                         break;
+                    case "magnet2": //fractal
+                        fractal = new MagnetType2(settings.Width, settings.Height, settings.Bailout, settings.Highest)
+                            .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
+                        hasFractalData = false;
+                        break;
                     case "load":
                         fractal.LoadSettings("settings.json").LoadDistance("distance.dat").LoadExposure("exposure.dat").TryLoadFlow("flow.dat");
 
@@ -957,6 +962,7 @@ namespace Sandbox
                         Console.WriteLine(String.Format("{0,-24} {1}", "multibrot3", "Render the Multibrot 3 fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "newton", "Render the Newton fractal (z^3-1)"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "magnet1", "Render the Magnet Type I rational-map fractal"));
+                        Console.WriteLine(String.Format("{0,-24} {1}", "magnet2", "Render the Magnet Type II rational-map fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "logisticmap", "Render the logistic map"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "render/load/save/draw", "Core pipeline commands"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "all", "Render or load once, then save every shader output"));

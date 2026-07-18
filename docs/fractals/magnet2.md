@@ -15,7 +15,7 @@ z_{n+1} = ((z_n^3 + 3(c - 1)z_n + (c - 1)(c - 2)) / (3z_n^2 + 3(c - 2)z_n + (c -
 ```
 
 ## Mathematical Background
-A higher-degree rational-map magnet fractal. Points in the parameter plane are iterated toward the attracting fixed point z = 1, with poles and basin boundaries producing dense circular filigree.
+Magnet Type II is the higher-degree companion to [[magnet1|Magnet Type I]], using a rational map rather than a polynomial escape map. The iteration is usually interpreted as a complexified parameter-plane map related to hierarchical-lattice magnetic renormalization formulas: stable parameters converge to the attracting fixed point `z = 1`, while poles and basin boundaries form the visible fractal structure.
 
 ## Rendering Method
 Escape-time algorithm on CPU with 1024×1024 resolution.
@@ -40,13 +40,15 @@ Escape-time algorithm on CPU with 1024×1024 resolution.
 - Bailout set to 250 to limit orbit tracing
 
 ## Known Variations
-- Default viewport and parameters as defined in `fractal_queue.json`
+- **Magnet Type I** lowers the rational-map degree and often produces a more two-lobed, disk-chain structure.
+- Changing convergence tolerance, bailout, or using distance/exposure combined shaders emphasizes either basin interiors or the pole-driven boundary filigree.
 
 ## Interesting Coordinates or Presets
 ![Rendered on 2026-07-18](../../output/2026-07-18_magnet2.png)
 
 ## Sources
-- Wikipedia: [Escape_time fractal](https://en.wikipedia.org/wiki/Escape-time_fractal)
+- Paul Bourke, “Magnet 1 / Magnet 2”: https://paulbourke.net/fractals/magnet/
+- Wikipedia: [Escape-time fractal](https://en.wikipedia.org/wiki/Escape-time_fractal)
 
 ## Related Notes
 - [[mandelbrot]]

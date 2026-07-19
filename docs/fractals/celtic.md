@@ -15,7 +15,7 @@ z_{n+1} = |\operatorname{Re}(z_n^2)| + i\operatorname{Im}(z_n^2) + c, \quad z_0 
 ```
 
 ## Mathematical Background
-A Mandelbrot-family escape-time fractal that folds the real component of z^2 before adding c, producing Celtic-knot-like lobes and mirrored boundary filaments.
+The Celtic Mandelbrot belongs to the family of folded Mandelbrot variants: it keeps the usual complex squaring step but applies an absolute-value fold to the real part of `z^2` before adding the parameter `c`. This breaks the analytic structure of the classic [[mandelbrot]] iteration while preserving escape-time behavior, so the result has Mandelbrot-like bulbs mixed with sharp cusps, bilateral bridges, and knot-like repeated motifs. It is closely related to other folded variants such as the Perpendicular Mandelbrot and Buffalo fractal.
 
 ## Rendering Method
 Escape-time algorithm on CPU with 1024×1024 resolution.
@@ -40,7 +40,9 @@ Escape-time algorithm on CPU with 1024×1024 resolution.
 - Bailout set to 500 to limit orbit tracing
 
 ## Known Variations
-- Default viewport and parameters as defined in `fractal_queue.json`
+- **Perpendicular Mandelbrot:** folds the imaginary component interaction instead of only the real component of `z^2`.
+- **Buffalo fractal:** applies absolute-value folds to both real and imaginary components before adding `c`.
+- **Celtic Julia sets:** keep the same Celtic recurrence but use each pixel as `z_0` with a fixed complex parameter `c`.
 
 ## Interesting Coordinates or Presets
 ![Rendered on 2026-07-19](../../output/2026-07-19_celtic.png)

@@ -726,6 +726,11 @@ namespace Sandbox
                             .Init(-1.5, 1.5, -1.5, 1.5);
                         hasFractalData = false;
                         break;
+                    case "celtic": //fractal
+                        fractal = new CelticMandelbrot(settings.Width, settings.Height, settings.Bailout, settings.Highest)
+                            .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
+                        hasFractalData = false;
+                        break;
                     case "magnet1": //fractal
                         fractal = new MagnetType1(settings.Width, settings.Height, settings.Bailout, settings.Highest)
                             .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
@@ -961,6 +966,7 @@ namespace Sandbox
                         Console.WriteLine(String.Format("{0,-24} {1}", "tricorn", "Render the Tricorn fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "multibrot3", "Render the Multibrot 3 fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "newton", "Render the Newton fractal (z^3-1)"));
+                        Console.WriteLine(String.Format("{0,-24} {1}", "celtic", "Render the Celtic Mandelbrot fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "magnet1", "Render the Magnet Type I rational-map fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "magnet2", "Render the Magnet Type II rational-map fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "logisticmap", "Render the logistic map"));

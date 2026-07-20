@@ -106,5 +106,14 @@
     "formula": "z_{n+1} = |\\operatorname{Re}(z_n^2)| + i\\operatorname{Im}(z_n^2) + c, \\quad z_0 = 0",
     "summary": "A Mandelbrot-family escape-time fractal that folds the real component of z^2 before adding c, producing Celtic-knot-like lobes and mirrored boundary filaments.",
     "notes": "Rendered on the symmetric parameter-plane viewport. The absolute-value fold creates cusped bridges and repeated knot-like motifs distinct from the classic Mandelbrot cardioid."
+  },
+  {
+    "keyword": "perpendicular-mandelbrot",
+    "name": "Perpendicular Mandelbrot",
+    "tag": "fractal/mandelbrot",
+    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 50, "min-real": -2.0, "max-real": 2.0, "min-imaginary": -2.0, "max-imaginary": 2.0},
+    "formula": "z_{n+1} = (|\\operatorname{Re}(z_n)| + i\\operatorname{Im}(z_n))^2 + c, \\quad z_0 = 0",
+    "summary": "A Mandelbrot-family escape-time fractal that folds only the real component of z before squaring. The perpendicular fold changes the symmetry of the quadratic map and produces vertical, ship-like tendrils along the boundary.",
+    "notes": "Rendered on a symmetric parameter-plane viewport. The single-axis fold is gentler than the Burning Ship's two-axis absolute-value fold, preserving more Mandelbrot-like structure while introducing perpendicular filaments."
   }
 ]

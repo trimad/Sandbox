@@ -115,5 +115,14 @@
     "formula": "z_{n+1} = (|\\operatorname{Re}(z_n)| + i\\operatorname{Im}(z_n))^2 + c, \\quad z_0 = 0",
     "summary": "A Mandelbrot-family escape-time fractal that folds only the real component of z before squaring. The perpendicular fold changes the symmetry of the quadratic map and produces vertical, ship-like tendrils along the boundary.",
     "notes": "Rendered on a symmetric parameter-plane viewport. The single-axis fold is gentler than the Burning Ship's two-axis absolute-value fold, preserving more Mandelbrot-like structure while introducing perpendicular filaments."
+  },
+  {
+    "keyword": "multibrot4",
+    "name": "Multibrot-4",
+    "tag": "fractal/multibrot",
+    "params": {"width": 1024, "height": 1024, "highest": 50},
+    "formula": "z_{n+1} = z_n^4 + c",
+    "summary": "The degree-4 analogue of the Mandelbrot set. Raising each orbit to the fourth power produces a three-armed symmetric parameter-plane set with thinner lobes and sharper branching than the quadratic Mandelbrot.",
+    "notes": "Rendered on a centered symmetric viewport. The even power creates mirrored lobes and fine boundary filaments; log1p exposure shading keeps both high-iteration interiors and narrow exterior tendrils visible."
   }
 ]

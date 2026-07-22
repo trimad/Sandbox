@@ -15,7 +15,9 @@ z_{n+1} = (\operatorname{Re}(z_n) + i|\operatorname{Im}(z_n)|)^2 + c, \quad z_0 
 ```
 
 ## Mathematical Background
-A Burning Ship-family escape-time fractal that folds the imaginary component before squaring. The one-axis fold creates ship-like mirrored structures while preserving a different handedness from the real-fold perpendicular Mandelbrot.
+The Perpendicular Burning Ship is part of the family of absolute-value quadratic maps related to the [[burningship]] and [[perpendicular-mandelbrot]] variants.  The ordinary Burning Ship folds both coordinates before squaring; this variant folds only the imaginary coordinate.  That single-axis fold changes the symmetry of the parameter plane and tends to create cusped wakes, mirrored hull-like lobes, and boundary filaments with a different handedness than the real-axis perpendicular Mandelbrot.
+
+Because the map still follows the escape-time template `z -> f(z) + c` with `z_0 = 0`, the rendered image is a parameter-plane set: each pixel is the complex parameter `c`, and color records how long the orbit remains bounded.
 
 ## Rendering Method
 Escape-time algorithm on CPU with 1024×1024 resolution.
@@ -40,7 +42,9 @@ Escape-time algorithm on CPU with 1024×1024 resolution.
 - Bailout set to 500 to limit orbit tracing
 
 ## Known Variations
-- Default viewport and parameters as defined in `fractal_queue.json`
+- **Burning Ship:** folds both real and imaginary components before squaring.
+- **Perpendicular Mandelbrot:** folds the real component before squaring.
+- **Perpendicular Burning Ship:** folds the imaginary component before squaring, producing a complementary one-axis Burning Ship variant.
 
 ## Interesting Coordinates or Presets
 ![Rendered on 2026-07-22](../../output/2026-07-22_perpendicular-burningship.png)

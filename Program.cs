@@ -741,6 +741,11 @@ namespace Sandbox
                             .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
                         hasFractalData = false;
                         break;
+                    case "perpendicular-burningship": //fractal
+                        fractal = new PerpendicularBurningShip(settings.Width, settings.Height, settings.Bailout, settings.Highest)
+                            .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
+                        hasFractalData = false;
+                        break;
                     case "magnet1": //fractal
                         fractal = new MagnetType1(settings.Width, settings.Height, settings.Bailout, settings.Highest)
                             .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
@@ -979,6 +984,7 @@ namespace Sandbox
                         Console.WriteLine(String.Format("{0,-24} {1}", "newton", "Render the Newton fractal (z^3-1)"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "celtic", "Render the Celtic Mandelbrot fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "perpendicular-mandelbrot", "Render the Perpendicular Mandelbrot fractal"));
+                        Console.WriteLine(String.Format("{0,-24} {1}", "perpendicular-burningship", "Render the Perpendicular Burning Ship fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "magnet1", "Render the Magnet Type I rational-map fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "magnet2", "Render the Magnet Type II rational-map fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "logisticmap", "Render the logistic map"));

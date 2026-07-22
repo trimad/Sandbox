@@ -124,5 +124,14 @@
     "formula": "z_{n+1} = z_n^4 + c",
     "summary": "The degree-4 analogue of the Mandelbrot set. Raising each orbit to the fourth power produces a three-armed symmetric parameter-plane set with thinner lobes and sharper branching than the quadratic Mandelbrot.",
     "notes": "Rendered on a centered symmetric viewport. The even power creates mirrored lobes and fine boundary filaments; log1p exposure shading keeps both high-iteration interiors and narrow exterior tendrils visible."
+  },
+  {
+    "keyword": "perpendicular-burningship",
+    "name": "Perpendicular Burning Ship",
+    "tag": "fractal/burningship",
+    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 50, "min-real": -2.0, "max-real": 2.0, "min-imaginary": -2.0, "max-imaginary": 2.0},
+    "formula": "z_{n+1} = (\\operatorname{Re}(z_n) + i|\\operatorname{Im}(z_n)|)^2 + c, \\quad z_0 = 0",
+    "summary": "A Burning Ship-family escape-time fractal that folds the imaginary component before squaring. The one-axis fold creates ship-like mirrored structures while preserving a different handedness from the real-fold perpendicular Mandelbrot.",
+    "notes": "Rendered on a symmetric parameter-plane viewport. The imaginary-axis fold produces sharp mirrored wakes and cusped boundary features distinct from both the classic Mandelbrot and the full two-axis Burning Ship."
   }
 ]

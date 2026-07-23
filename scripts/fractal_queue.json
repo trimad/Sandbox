@@ -133,5 +133,14 @@
     "formula": "z_{n+1} = (\\operatorname{Re}(z_n) + i|\\operatorname{Im}(z_n)|)^2 + c, \\quad z_0 = 0",
     "summary": "A Burning Ship-family escape-time fractal that folds the imaginary component before squaring. The one-axis fold creates ship-like mirrored structures while preserving a different handedness from the real-fold perpendicular Mandelbrot.",
     "notes": "Rendered on a symmetric parameter-plane viewport. The imaginary-axis fold produces sharp mirrored wakes and cusped boundary features distinct from both the classic Mandelbrot and the full two-axis Burning Ship."
+  },
+  {
+    "keyword": "phoenix",
+    "name": "Phoenix Fractal",
+    "tag": "fractal/julia",
+    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 80, "min-real": -1.5, "max-real": 1.5, "min-imaginary": -1.5, "max-imaginary": 1.5},
+    "formula": "z_{n+1} = z_n^2 + c + p z_{n-1}, \\quad c = -0.5, \\quad p = -0.56667",
+    "summary": "A two-step Julia-family escape-time fractal where each new iterate depends on both the current and previous orbit values. The memory term produces bird-like wings, nested curls, and asymmetric filament structure.",
+    "notes": "Rendered as a Phoenix Julia set on a centered viewport. The negative real memory coefficient folds prior-orbit momentum back into the quadratic map, making smooth curled arms visible under log1p exposure shading."
   }
 ]

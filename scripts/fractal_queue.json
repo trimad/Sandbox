@@ -142,5 +142,14 @@
     "formula": "z_{n+1} = z_n^2 + c + p z_{n-1}, \\quad c = -0.5, \\quad p = -0.56667",
     "summary": "A two-step Julia-family escape-time fractal where each new iterate depends on both the current and previous orbit values. The memory term produces bird-like wings, nested curls, and asymmetric filament structure.",
     "notes": "Rendered as a Phoenix Julia set on a centered viewport. The negative real memory coefficient folds prior-orbit momentum back into the quadratic map, making smooth curled arms visible under log1p exposure shading."
+  },
+  {
+    "keyword": "buffalo",
+    "name": "Buffalo Mandelbrot",
+    "tag": "fractal/mandelbrot",
+    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 80, "min-real": -2.0, "max-real": 2.0, "min-imaginary": -2.0, "max-imaginary": 2.0},
+    "formula": "z_{n+1} = |\\operatorname{Re}(z_n^2)| + i|\\operatorname{Im}(z_n^2)| + c, \\quad z_0 = 0",
+    "summary": "A Mandelbrot-family escape-time fractal that folds both real and imaginary components after squaring. The fold creates horn-like lobes and mirrored filament structures reminiscent of a buffalo silhouette.",
+    "notes": "Rendered on a symmetric parameter-plane viewport. Log1p exposure shading emphasizes the folded quadratic boundary, horn-like protrusions, and nested escape bands."
   }
 ]

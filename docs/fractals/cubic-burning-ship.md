@@ -15,7 +15,7 @@ z_{n+1} = (|\operatorname{Re}(z_n)| + i|\operatorname{Im}(z_n)|)^3 + c, \quad z_
 ```
 
 ## Mathematical Background
-A degree-3 Burning Ship-family escape-time fractal. Both coordinates are folded to their absolute values before applying a cubic Multibrot step, producing ship-like cusps with higher-order lobes and branching.
+This is a folded Multibrot variation: the Burning Ship absolute-value fold is applied to both real and imaginary coordinates, then the orbit uses a cubic power instead of the usual quadratic square. The cubic step changes the parameter-plane symmetry and tends to sharpen the folded cusps into higher-order plume and lobe structures.
 
 ## Rendering Method
 Escape-time algorithm on CPU with 1024×1024 resolution.

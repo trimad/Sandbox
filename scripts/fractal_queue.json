@@ -151,5 +151,14 @@
     "formula": "z_{n+1} = |\\operatorname{Re}(z_n^2)| + i|\\operatorname{Im}(z_n^2)| + c, \\quad z_0 = 0",
     "summary": "A Mandelbrot-family escape-time fractal that folds both real and imaginary components after squaring. The fold creates horn-like lobes and mirrored filament structures reminiscent of a buffalo silhouette.",
     "notes": "Rendered on a symmetric parameter-plane viewport. Log1p exposure shading emphasizes the folded quadratic boundary, horn-like protrusions, and nested escape bands."
+  },
+  {
+    "keyword": "cubic-burning-ship",
+    "name": "Cubic Burning Ship",
+    "tag": "fractal/burningship",
+    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 80, "min-real": -2.0, "max-real": 2.0, "min-imaginary": -2.0, "max-imaginary": 2.0},
+    "formula": "z_{n+1} = (|\\operatorname{Re}(z_n)| + i|\\operatorname{Im}(z_n)|)^3 + c, \\quad z_0 = 0",
+    "summary": "A degree-3 Burning Ship-family escape-time fractal. Both coordinates are folded to their absolute values before applying a cubic Multibrot step, producing ship-like cusps with higher-order lobes and branching.",
+    "notes": "Rendered on a symmetric parameter-plane viewport. The cubic power changes the folded map's symmetry, separating the familiar Burning Ship smoke into sharper threefold plume structures."
   }
 ]

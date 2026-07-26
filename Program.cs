@@ -726,6 +726,11 @@ namespace Sandbox
                             .Init(-1.5, 1.5, -1.5, 1.5);
                         hasFractalData = false;
                         break;
+                    case "cubic-tricorn": //fractal
+                        fractal = new CubicTricorn(settings.Width, settings.Height, settings.Bailout, settings.Highest)
+                            .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
+                        hasFractalData = false;
+                        break;
                     case "multibrot3": //fractal
                         fractal = new Multibrot(settings.Width, settings.Height, settings.Highest, 3)
                             .Init(-1.2, 1.2, -1.2, 1.2);
@@ -996,6 +1001,7 @@ namespace Sandbox
                         Console.WriteLine(String.Format("{0,-24} {1}", "cubic-burning-ship", "Render the Cubic Burning Ship fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "buffalo", "Render the Buffalo Mandelbrot fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "tricorn", "Render the Tricorn fractal"));
+                        Console.WriteLine(String.Format("{0,-24} {1}", "cubic-tricorn", "Render the Cubic Tricorn / degree-3 multicorn fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "multibrot3", "Render the Multibrot 3 fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "multibrot4", "Render the Multibrot 4 fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "newton", "Render the Newton fractal (z^3-1)"));

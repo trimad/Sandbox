@@ -160,5 +160,14 @@
     "formula": "z_{n+1} = (|\\operatorname{Re}(z_n)| + i|\\operatorname{Im}(z_n)|)^3 + c, \\quad z_0 = 0",
     "summary": "A degree-3 Burning Ship-family escape-time fractal. Both coordinates are folded to their absolute values before applying a cubic Multibrot step, producing ship-like cusps with higher-order lobes and branching.",
     "notes": "Rendered on a symmetric parameter-plane viewport. The cubic power changes the folded map's symmetry, separating the familiar Burning Ship smoke into sharper threefold plume structures."
+  },
+  {
+    "keyword": "cubic-tricorn",
+    "name": "Cubic Tricorn",
+    "tag": "fractal/tricorn",
+    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 80, "min-real": -1.5, "max-real": 1.5, "min-imaginary": -1.5, "max-imaginary": 1.5},
+    "formula": "z_{n+1} = \\overline{z_n}^3 + c, \\quad z_0 = 0",
+    "summary": "A degree-3 multicorn: the anti-holomorphic analogue of the cubic Multibrot set. Conjugating the orbit before cubing produces reflected lobes, parabolic arcs, and tricorn-like symmetry in a threefold parameter plane.",
+    "notes": "Rendered on a centered symmetric viewport. Log1p exposure shading emphasizes the multicorn boundary, anti-holomorphic cusps, and satellite copies around the central lobes."
   }
 ]

@@ -17,6 +17,9 @@ z_{n+1} = \overline{z_n}^3 + c, \quad z_0 = 0
 ## Mathematical Background
 A degree-3 multicorn: the anti-holomorphic analogue of the cubic Multibrot set. Conjugating the orbit before cubing produces reflected lobes, parabolic arcs, and tricorn-like symmetry in a threefold parameter plane.
 
+## Family Context
+The classic [[tricorn]] uses the anti-holomorphic quadratic map `z -> conjugate(z)^2 + c`. This preset lifts the same conjugated-orbit idea to degree 3, so it is best read as a cubic member of the multicorn family rather than as a simple power-3 Mandelbrot. Anti-holomorphic maps often show parabolic arcs and mirrored satellite structure that differ from holomorphic [[multibrot3]] lobes.
+
 ## Rendering Method
 Escape-time algorithm on CPU with 1024×1024 resolution.
 
@@ -40,13 +43,16 @@ Escape-time algorithm on CPU with 1024×1024 resolution.
 - Bailout set to 500 to limit orbit tracing
 
 ## Known Variations
-- Default viewport and parameters as defined in `fractal_queue.json`
+- **Quadratic Tricorn / Mandelbar:** `z_{n+1} = \overline{z_n}^2 + c`.
+- **Higher-degree multicorns:** `z_{n+1} = \overline{z_n}^d + c` for integer degree `d > 2`.
+- **Holomorphic cubic Multibrot:** `z_{n+1} = z_n^3 + c`, useful as a visual comparison because it keeps the same power but removes conjugation.
 
 ## Interesting Coordinates or Presets
 ![Rendered on 2026-07-26](../../output/2026-07-26_cubic-tricorn.png)
 
 ## Sources
-- Wikipedia: [Escape_time fractal](https://en.wikipedia.org/wiki/Escape-time_fractal)
+- Wikipedia: [Tricorn (mathematics)](https://en.wikipedia.org/wiki/Tricorn_(mathematics))
+- Wikipedia: [Escape-time fractal](https://en.wikipedia.org/wiki/Escape-time_fractal)
 
 ## Related Notes
 - [[mandelbrot]]

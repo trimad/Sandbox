@@ -15,7 +15,7 @@ z_{n+1} = (|\operatorname{Re}(z_n)| + i|\operatorname{Im}(z_n)|)^4 + c, \quad z_
 ```
 
 ## Mathematical Background
-A degree-4 Burning Ship-family escape-time fractal. Both coordinates are folded to absolute values before a quartic Multibrot step, creating folded ship-like cusps with higher-order lobes and thin branching.
+The classic [[burningship]] applies a two-axis absolute-value fold before a quadratic Mandelbrot step. This quartic variant keeps the same folded parameter-plane idea but raises the folded orbit to the fourth power, so it sits between Burning Ship variants and [[multibrot4]]-style higher-degree escape-time sets. The even power tends to sharpen mirrored plume boundaries and produces stronger axis-aligned symmetry than the cubic Burning Ship.
 
 ## Rendering Method
 Escape-time algorithm on CPU with 1024×1024 resolution.

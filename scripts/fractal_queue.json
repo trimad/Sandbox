@@ -169,5 +169,14 @@
     "formula": "z_{n+1} = \\overline{z_n}^3 + c, \\quad z_0 = 0",
     "summary": "A degree-3 multicorn: the anti-holomorphic analogue of the cubic Multibrot set. Conjugating the orbit before cubing produces reflected lobes, parabolic arcs, and tricorn-like symmetry in a threefold parameter plane.",
     "notes": "Rendered on a centered symmetric viewport. Log1p exposure shading emphasizes the multicorn boundary, anti-holomorphic cusps, and satellite copies around the central lobes."
+  },
+  {
+    "keyword": "quartic-burning-ship",
+    "name": "Quartic Burning Ship",
+    "tag": "fractal/burningship",
+    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 80, "min-real": -2.0, "max-real": 2.0, "min-imaginary": -2.0, "max-imaginary": 2.0},
+    "formula": "z_{n+1} = (|\\operatorname{Re}(z_n)| + i|\\operatorname{Im}(z_n)|)^4 + c, \\quad z_0 = 0",
+    "summary": "A degree-4 Burning Ship-family escape-time fractal. Both coordinates are folded to absolute values before a quartic Multibrot step, creating folded ship-like cusps with higher-order lobes and thin branching.",
+    "notes": "Rendered on a symmetric parameter-plane viewport. The quartic power stretches the folded Burning Ship silhouette into sharper even-powered plume structures while log1p exposure shading preserves exterior tendrils."
   }
 ]

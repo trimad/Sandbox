@@ -187,5 +187,14 @@
     "formula": "z_{n+1} = z_n^5 + c, \\quad z_0 = 0",
     "summary": "The degree-5 Mandelbrot-family parameter set. Raising each orbit to the fifth power produces fivefold rotational structure, narrow satellite bulbs, and delicate branching around the escape boundary.",
     "notes": "Rendered on a centered symmetric viewport. The quintic power compresses the main body and spreads thin dendritic tendrils, so log1p exposure shading helps preserve both the boundary and exterior escape bands."
+  },
+  {
+    "keyword": "sextic-multibrot",
+    "name": "Sextic Multibrot",
+    "tag": "fractal/multibrot",
+    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 80, "min-real": -1.25, "max-real": 1.25, "min-imaginary": -1.25, "max-imaginary": 1.25},
+    "formula": "z_{n+1} = z_n^6 + c, \\quad z_0 = 0",
+    "summary": "The degree-6 Mandelbrot-family parameter set. Raising each orbit to the sixth power produces fivefold rotational symmetry, compressed lobes, and very thin exterior tendrils around the escape boundary.",
+    "notes": "Rendered on a centered symmetric viewport. The sextic power makes the main body compact and emphasizes narrow satellite bulbs; log1p exposure shading preserves high-iteration boundary detail."
   }
 ]

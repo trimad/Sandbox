@@ -15,7 +15,7 @@ z_{n+1} = z_n^6 + c, \quad z_0 = 0
 ```
 
 ## Mathematical Background
-The degree-6 Mandelbrot-family parameter set. Raising each orbit to the sixth power produces fivefold rotational symmetry, compressed lobes, and very thin exterior tendrils around the escape boundary.
+Sextic Multibrot belongs to the generalized Multibrot family `z ↦ z^d + c` with degree `d = 6`. For integer degree `d`, the parameter-plane set has `(d - 1)`-fold rotational symmetry, so the sextic case forms five major lobes around the origin. As the degree increases, the connectedness locus becomes more compact and its exterior filaments narrow, making a tighter viewport useful for daily rendering.
 
 ## Rendering Method
 Escape-time algorithm on CPU with 1024×1024 resolution.

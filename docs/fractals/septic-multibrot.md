@@ -15,7 +15,7 @@ z_{n+1} = z_n^7 + c, \quad z_0 = 0
 ```
 
 ## Mathematical Background
-The degree-7 Mandelbrot-family parameter set. Raising each orbit to the seventh power produces sixfold rotational structure, compact lobes, and fine tendrils around the escape boundary.
+The Septic Multibrot belongs to the connectedness loci of maps `z ↦ z^d + c`. For degree `d = 7`, the parameter set has `d - 1 = 6` rotational arms because multiplying both `z` and `c` by a sixth root of unity preserves the orbit structure up to rotation. Higher powers make the main body more compact than the quadratic Mandelbrot and push detail into narrow satellite bulbs and filaments.
 
 ## Rendering Method
 Escape-time algorithm on CPU with 1024×1024 resolution.

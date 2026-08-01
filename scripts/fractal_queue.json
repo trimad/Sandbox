@@ -196,5 +196,14 @@
     "formula": "z_{n+1} = z_n^6 + c, \\quad z_0 = 0",
     "summary": "The degree-6 Mandelbrot-family parameter set. Raising each orbit to the sixth power produces fivefold rotational symmetry, compressed lobes, and very thin exterior tendrils around the escape boundary.",
     "notes": "Rendered on a centered symmetric viewport. The sextic power makes the main body compact and emphasizes narrow satellite bulbs; log1p exposure shading preserves high-iteration boundary detail."
+  },
+  {
+    "keyword": "septic-multibrot",
+    "name": "Septic Multibrot",
+    "tag": "fractal/multibrot",
+    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 80, "min-real": -1.2, "max-real": 1.2, "min-imaginary": -1.2, "max-imaginary": 1.2},
+    "formula": "z_{n+1} = z_n^7 + c, \\quad z_0 = 0",
+    "summary": "The degree-7 Mandelbrot-family parameter set. Raising each orbit to the seventh power produces sixfold rotational structure, compact lobes, and fine tendrils around the escape boundary.",
+    "notes": "Rendered on a centered symmetric viewport. The septic power tightens the main body and produces narrow satellite bulbs; log1p exposure shading preserves delicate high-iteration boundary filaments."
   }
 ]

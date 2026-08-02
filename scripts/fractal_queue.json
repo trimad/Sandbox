@@ -205,5 +205,14 @@
     "formula": "z_{n+1} = z_n^7 + c, \\quad z_0 = 0",
     "summary": "The degree-7 Mandelbrot-family parameter set. Raising each orbit to the seventh power produces sixfold rotational structure, compact lobes, and fine tendrils around the escape boundary.",
     "notes": "Rendered on a centered symmetric viewport. The septic power tightens the main body and produces narrow satellite bulbs; log1p exposure shading preserves delicate high-iteration boundary filaments."
+  },
+  {
+    "keyword": "octic-multibrot",
+    "name": "Octic Multibrot",
+    "tag": "fractal/multibrot",
+    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 80, "min-real": -1.15, "max-real": 1.15, "min-imaginary": -1.15, "max-imaginary": 1.15},
+    "formula": "z_{n+1} = z_n^8 + c, \\quad z_0 = 0",
+    "summary": "The degree-8 Mandelbrot-family parameter set. Raising each orbit to the eighth power produces sevenfold rotational structure, compact lobes, and extremely fine tendrils around the escape boundary.",
+    "notes": "Rendered on a centered symmetric viewport. The octic power tightens the main body further than lower-degree Multibrots; log1p exposure shading preserves thin satellite bulbs and high-iteration boundary filaments."
   }
 ]

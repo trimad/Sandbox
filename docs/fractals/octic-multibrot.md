@@ -15,7 +15,7 @@ z_{n+1} = z_n^8 + c, \quad z_0 = 0
 ```
 
 ## Mathematical Background
-The degree-8 Mandelbrot-family parameter set. Raising each orbit to the eighth power produces sevenfold rotational structure, compact lobes, and extremely fine tendrils around the escape boundary.
+The Octic Multibrot is the connectedness locus for the unicritical polynomial family `z \mapsto z^8 + c`. As with other degree-`d` Multibrots, its parameter plane has `d - 1` rotational symmetry: here, seven arms related by seventh roots of unity. The high even power makes the central body compact while concentrating detail into thin satellite bulbs and boundary filaments.
 
 ## Rendering Method
 Escape-time algorithm on CPU with 1024×1024 resolution.

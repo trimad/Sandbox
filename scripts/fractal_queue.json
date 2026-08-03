@@ -3,7 +3,12 @@
     "keyword": "mandelbrot",
     "name": "Classic Mandelbrot Set",
     "tag": "fractal/mandelbrot",
-    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 50},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 50
+    },
     "formula": "z_{n+1} = z_n^2 + c, \\quad z_0 = 0",
     "summary": "The quintessential escape-time fractal. Points in the complex plane are tested for escape under repeated squaring. The boundary contains infinite detail.",
     "notes": "Rendered with a bailout of 500 and exposure target of 50 using a log1p-mapped shader to reveal structure near the cardioid and period bulbs."
@@ -12,7 +17,11 @@
     "keyword": "julia",
     "name": "Julia Set",
     "tag": "fractal/julia",
-    "params": {"width": 1024, "height": 1024, "highest": 100},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "highest": 100
+    },
     "formula": "z_{n+1} = z_n^2 + c, \\quad c = -0.75 + 0.156i",
     "summary": "A connected Julia set for a parameter inside the Mandelbrot set. Shows dendritic filaments and spiral structure.",
     "notes": "Fixed c = -0.75 + 0.156i gives a dendrite-like shape. Distance field shading highlights filament width."
@@ -21,7 +30,12 @@
     "keyword": "burningship",
     "name": "Burning Ship",
     "tag": "fractal/burningship",
-    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 50},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 50
+    },
     "formula": "z_{n+1} = (|Re(z_n)| + i|Im(z_n)|)^2 + c",
     "summary": "A variant that takes the absolute value of real and imaginary parts before squaring, producing fractal 'smoke' and ship-like shapes.",
     "notes": "Default viewport spans nearly the full Burning Ship set. Smoothed distance estimate avoids banding."
@@ -30,7 +44,11 @@
     "keyword": "tricorn",
     "name": "Tricorn (Mandelbar)",
     "tag": "fractal/tricorn",
-    "params": {"width": 1024, "height": 1024, "highest": 100},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "highest": 100
+    },
     "formula": "z_{n+1} = \\overline{z_n}^2 + c",
     "summary": "The conjugate of the Mandelbrot iteration. It has a self-similar anti-holomorphic structure with three-fold symmetries.",
     "notes": "Standard viewport centered at origin. Exposure shading reveals the central bulb and satellite copies."
@@ -39,7 +57,11 @@
     "keyword": "multibrot3",
     "name": "Multibrot-3",
     "tag": "fractal/multibrot",
-    "params": {"width": 1024, "height": 1024, "highest": 50},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "highest": 50
+    },
     "formula": "z_{n+1} = z_n^3 + c",
     "summary": "The degree-3 analogue of the Mandelbrot set. The main cardioid becomes a reentrant shape with three-fold symmetry.",
     "notes": "Higher-power Mandelbrots have thinner filaments. A bailout of 500 captures enough orbit detail for clean shading."
@@ -48,7 +70,11 @@
     "keyword": "newton",
     "name": "Newton Fractal (z^3 - 1)",
     "tag": "fractal/newton",
-    "params": {"width": 1024, "height": 1024, "highest": 50},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "highest": 50
+    },
     "formula": "z \\to z - \\frac{z^3 - 1}{3 z^2}",
     "summary": "Basins of attraction for Newton's method applied to z^3 - 1 = 0. The three basins meet at the Julia set of the method.",
     "notes": "Convergence tolerance set to 1e-8. Iteration count maps nicely to exposure; distance field emphasizes basin boundaries."
@@ -57,7 +83,11 @@
     "keyword": "glynn",
     "name": "Glynn Fractal",
     "tag": "fractal/glynn",
-    "params": {"width": 1024, "height": 1024, "highest": 50},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "highest": 50
+    },
     "formula": "z_{n+1} = z_n^{1.5} - 0.2",
     "summary": "A complex-analytic fractal with fractional exponent 1.5. Produces a tree-like structure with dense branching.",
     "notes": "Viewport centered on the main tree. Logarithmic distance shading highlights fine branch tips."
@@ -66,7 +96,11 @@
     "keyword": "logisticmap",
     "name": "Logistic Map",
     "tag": "fractal/logisticmap",
-    "params": {"width": 1024, "height": 1024, "highest": 100},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "highest": 100
+    },
     "formula": "x_{n+1} = r x_n (1 - x_n)",
     "summary": "A one-dimensional chaotic map plotted in the (r, x) plane. Classic example of period-doubling route to chaos.",
     "notes": "Full bifurcation diagram from r=2 to r=4. High exposure target captures transient chaotic bands."
@@ -75,7 +109,13 @@
     "keyword": "buddhabrot",
     "name": "Buddhabrot",
     "tag": "fractal/buddhabrot",
-    "params": {"width": 512, "height": 512, "cutoff": 20, "bailout": 600, "highest": 35},
+    "params": {
+      "width": 512,
+      "height": 512,
+      "cutoff": 20,
+      "bailout": 600,
+      "highest": 35
+    },
     "formula": "z_{n+1} = z_n^2 + c, \\quad z_0 = 0; plot escaping orbit points instead of parameter points",
     "summary": "A trajectory-density rendering of the Mandelbrot iteration. Instead of coloring c directly, it accumulates the paths of escaping orbits, revealing ghostly basin structure around the Mandelbrot set.",
     "notes": "Stochastic CPU render with modest exposure target for the daily run. Lower cutoff suppresses early orbit points while preserving the characteristic nebula-like density field."
@@ -84,16 +124,32 @@
     "keyword": "buddhabrot-coverage",
     "name": "Coverage-Guided Buddhabrot",
     "tag": "fractal/buddhabrot",
-    "params": {"width": 512, "height": 512, "cutoff": 20, "bailout": 600, "coverage": 5, "highest": 35},
+    "params": {
+      "width": 512,
+      "height": 512,
+      "cutoff": 20,
+      "bailout": 600,
+      "coverage": 5,
+      "highest": 35
+    },
     "formula": "z_{n+1} = z_n^2 + c, \\quad z_0 = 0; accumulate escaping orbit points until a target percentage of pixels is hit",
     "summary": "A Buddhabrot rendering variant that keeps sampling escaping Mandelbrot orbits until a specified image-coverage target is reached, making the stopping condition density-driven rather than exposure-driven.",
-    "notes": "Daily preset uses a modest 5% coverage target at 512×512 resolution to keep the stochastic CPU render bounded while still revealing the familiar nebula-like orbit-density structure."
+    "notes": "Daily preset uses a modest 5% coverage target at 512\u00d7512 resolution to keep the stochastic CPU render bounded while still revealing the familiar nebula-like orbit-density structure."
   },
   {
     "keyword": "magnet2",
     "name": "Magnet Type II Fractal",
     "tag": "fractal/magnet",
-    "params": {"width": 1024, "height": 1024, "bailout": 250, "highest": 250, "min-real": -2.25, "max-real": 2.25, "min-imaginary": -2.25, "max-imaginary": 2.25},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 250,
+      "highest": 250,
+      "min-real": -2.25,
+      "max-real": 2.25,
+      "min-imaginary": -2.25,
+      "max-imaginary": 2.25
+    },
     "formula": "z_{n+1} = ((z_n^3 + 3(c - 1)z_n + (c - 1)(c - 2)) / (3z_n^2 + 3(c - 2)z_n + (c - 1)(c - 2) + 1))^2, \\quad z_0 = 0",
     "summary": "A higher-degree rational-map magnet fractal. Points in the parameter plane are iterated toward the attracting fixed point z = 1, with poles and basin boundaries producing dense circular filigree.",
     "notes": "Full symmetric parameter-plane viewport. The rational denominator creates sharp singular structures, so guarded division and convergence checks are used during CPU rendering."
@@ -102,7 +158,16 @@
     "keyword": "celtic",
     "name": "Celtic Mandelbrot",
     "tag": "fractal/mandelbrot",
-    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 50, "min-real": -2.0, "max-real": 2.0, "min-imaginary": -2.0, "max-imaginary": 2.0},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 50,
+      "min-real": -2.0,
+      "max-real": 2.0,
+      "min-imaginary": -2.0,
+      "max-imaginary": 2.0
+    },
     "formula": "z_{n+1} = |\\operatorname{Re}(z_n^2)| + i\\operatorname{Im}(z_n^2) + c, \\quad z_0 = 0",
     "summary": "A Mandelbrot-family escape-time fractal that folds the real component of z^2 before adding c, producing Celtic-knot-like lobes and mirrored boundary filaments.",
     "notes": "Rendered on the symmetric parameter-plane viewport. The absolute-value fold creates cusped bridges and repeated knot-like motifs distinct from the classic Mandelbrot cardioid."
@@ -111,7 +176,16 @@
     "keyword": "perpendicular-mandelbrot",
     "name": "Perpendicular Mandelbrot",
     "tag": "fractal/mandelbrot",
-    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 50, "min-real": -2.0, "max-real": 2.0, "min-imaginary": -2.0, "max-imaginary": 2.0},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 50,
+      "min-real": -2.0,
+      "max-real": 2.0,
+      "min-imaginary": -2.0,
+      "max-imaginary": 2.0
+    },
     "formula": "z_{n+1} = (|\\operatorname{Re}(z_n)| + i\\operatorname{Im}(z_n))^2 + c, \\quad z_0 = 0",
     "summary": "A Mandelbrot-family escape-time fractal that folds only the real component of z before squaring. The perpendicular fold changes the symmetry of the quadratic map and produces vertical, ship-like tendrils along the boundary.",
     "notes": "Rendered on a symmetric parameter-plane viewport. The single-axis fold is gentler than the Burning Ship's two-axis absolute-value fold, preserving more Mandelbrot-like structure while introducing perpendicular filaments."
@@ -120,7 +194,11 @@
     "keyword": "multibrot4",
     "name": "Multibrot-4",
     "tag": "fractal/multibrot",
-    "params": {"width": 1024, "height": 1024, "highest": 50},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "highest": 50
+    },
     "formula": "z_{n+1} = z_n^4 + c",
     "summary": "The degree-4 analogue of the Mandelbrot set. Raising each orbit to the fourth power produces a three-armed symmetric parameter-plane set with thinner lobes and sharper branching than the quadratic Mandelbrot.",
     "notes": "Rendered on a centered symmetric viewport. The even power creates mirrored lobes and fine boundary filaments; log1p exposure shading keeps both high-iteration interiors and narrow exterior tendrils visible."
@@ -129,7 +207,16 @@
     "keyword": "perpendicular-burningship",
     "name": "Perpendicular Burning Ship",
     "tag": "fractal/burningship",
-    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 50, "min-real": -2.0, "max-real": 2.0, "min-imaginary": -2.0, "max-imaginary": 2.0},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 50,
+      "min-real": -2.0,
+      "max-real": 2.0,
+      "min-imaginary": -2.0,
+      "max-imaginary": 2.0
+    },
     "formula": "z_{n+1} = (\\operatorname{Re}(z_n) + i|\\operatorname{Im}(z_n)|)^2 + c, \\quad z_0 = 0",
     "summary": "A Burning Ship-family escape-time fractal that folds the imaginary component before squaring. The one-axis fold creates ship-like mirrored structures while preserving a different handedness from the real-fold perpendicular Mandelbrot.",
     "notes": "Rendered on a symmetric parameter-plane viewport. The imaginary-axis fold produces sharp mirrored wakes and cusped boundary features distinct from both the classic Mandelbrot and the full two-axis Burning Ship."
@@ -138,7 +225,16 @@
     "keyword": "phoenix",
     "name": "Phoenix Fractal",
     "tag": "fractal/julia",
-    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 80, "min-real": -1.5, "max-real": 1.5, "min-imaginary": -1.5, "max-imaginary": 1.5},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 80,
+      "min-real": -1.5,
+      "max-real": 1.5,
+      "min-imaginary": -1.5,
+      "max-imaginary": 1.5
+    },
     "formula": "z_{n+1} = z_n^2 + c + p z_{n-1}, \\quad c = -0.5, \\quad p = -0.56667",
     "summary": "A two-step Julia-family escape-time fractal where each new iterate depends on both the current and previous orbit values. The memory term produces bird-like wings, nested curls, and asymmetric filament structure.",
     "notes": "Rendered as a Phoenix Julia set on a centered viewport. The negative real memory coefficient folds prior-orbit momentum back into the quadratic map, making smooth curled arms visible under log1p exposure shading."
@@ -147,7 +243,16 @@
     "keyword": "buffalo",
     "name": "Buffalo Mandelbrot",
     "tag": "fractal/mandelbrot",
-    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 80, "min-real": -2.0, "max-real": 2.0, "min-imaginary": -2.0, "max-imaginary": 2.0},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 80,
+      "min-real": -2.0,
+      "max-real": 2.0,
+      "min-imaginary": -2.0,
+      "max-imaginary": 2.0
+    },
     "formula": "z_{n+1} = |\\operatorname{Re}(z_n^2)| + i|\\operatorname{Im}(z_n^2)| + c, \\quad z_0 = 0",
     "summary": "A Mandelbrot-family escape-time fractal that folds both real and imaginary components after squaring. The fold creates horn-like lobes and mirrored filament structures reminiscent of a buffalo silhouette.",
     "notes": "Rendered on a symmetric parameter-plane viewport. Log1p exposure shading emphasizes the folded quadratic boundary, horn-like protrusions, and nested escape bands."
@@ -156,7 +261,16 @@
     "keyword": "cubic-burning-ship",
     "name": "Cubic Burning Ship",
     "tag": "fractal/burningship",
-    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 80, "min-real": -2.0, "max-real": 2.0, "min-imaginary": -2.0, "max-imaginary": 2.0},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 80,
+      "min-real": -2.0,
+      "max-real": 2.0,
+      "min-imaginary": -2.0,
+      "max-imaginary": 2.0
+    },
     "formula": "z_{n+1} = (|\\operatorname{Re}(z_n)| + i|\\operatorname{Im}(z_n)|)^3 + c, \\quad z_0 = 0",
     "summary": "A degree-3 Burning Ship-family escape-time fractal. Both coordinates are folded to their absolute values before applying a cubic Multibrot step, producing ship-like cusps with higher-order lobes and branching.",
     "notes": "Rendered on a symmetric parameter-plane viewport. The cubic power changes the folded map's symmetry, separating the familiar Burning Ship smoke into sharper threefold plume structures."
@@ -165,7 +279,16 @@
     "keyword": "cubic-tricorn",
     "name": "Cubic Tricorn",
     "tag": "fractal/tricorn",
-    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 80, "min-real": -1.5, "max-real": 1.5, "min-imaginary": -1.5, "max-imaginary": 1.5},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 80,
+      "min-real": -1.5,
+      "max-real": 1.5,
+      "min-imaginary": -1.5,
+      "max-imaginary": 1.5
+    },
     "formula": "z_{n+1} = \\overline{z_n}^3 + c, \\quad z_0 = 0",
     "summary": "A degree-3 multicorn: the anti-holomorphic analogue of the cubic Multibrot set. Conjugating the orbit before cubing produces reflected lobes, parabolic arcs, and tricorn-like symmetry in a threefold parameter plane.",
     "notes": "Rendered on a centered symmetric viewport. Log1p exposure shading emphasizes the multicorn boundary, anti-holomorphic cusps, and satellite copies around the central lobes."
@@ -174,7 +297,16 @@
     "keyword": "quartic-burning-ship",
     "name": "Quartic Burning Ship",
     "tag": "fractal/burningship",
-    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 80, "min-real": -2.0, "max-real": 2.0, "min-imaginary": -2.0, "max-imaginary": 2.0},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 80,
+      "min-real": -2.0,
+      "max-real": 2.0,
+      "min-imaginary": -2.0,
+      "max-imaginary": 2.0
+    },
     "formula": "z_{n+1} = (|\\operatorname{Re}(z_n)| + i|\\operatorname{Im}(z_n)|)^4 + c, \\quad z_0 = 0",
     "summary": "A degree-4 Burning Ship-family escape-time fractal. Both coordinates are folded to absolute values before a quartic Multibrot step, creating folded ship-like cusps with higher-order lobes and thin branching.",
     "notes": "Rendered on a symmetric parameter-plane viewport. The quartic power stretches the folded Burning Ship silhouette into sharper even-powered plume structures while log1p exposure shading preserves exterior tendrils."
@@ -183,7 +315,16 @@
     "keyword": "quintic-multibrot",
     "name": "Quintic Multibrot",
     "tag": "fractal/multibrot",
-    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 80, "min-real": -1.35, "max-real": 1.35, "min-imaginary": -1.35, "max-imaginary": 1.35},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 80,
+      "min-real": -1.35,
+      "max-real": 1.35,
+      "min-imaginary": -1.35,
+      "max-imaginary": 1.35
+    },
     "formula": "z_{n+1} = z_n^5 + c, \\quad z_0 = 0",
     "summary": "The degree-5 Mandelbrot-family parameter set. Raising each orbit to the fifth power produces fivefold rotational structure, narrow satellite bulbs, and delicate branching around the escape boundary.",
     "notes": "Rendered on a centered symmetric viewport. The quintic power compresses the main body and spreads thin dendritic tendrils, so log1p exposure shading helps preserve both the boundary and exterior escape bands."
@@ -192,7 +333,16 @@
     "keyword": "sextic-multibrot",
     "name": "Sextic Multibrot",
     "tag": "fractal/multibrot",
-    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 80, "min-real": -1.25, "max-real": 1.25, "min-imaginary": -1.25, "max-imaginary": 1.25},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 80,
+      "min-real": -1.25,
+      "max-real": 1.25,
+      "min-imaginary": -1.25,
+      "max-imaginary": 1.25
+    },
     "formula": "z_{n+1} = z_n^6 + c, \\quad z_0 = 0",
     "summary": "The degree-6 Mandelbrot-family parameter set. Raising each orbit to the sixth power produces fivefold rotational symmetry, compressed lobes, and very thin exterior tendrils around the escape boundary.",
     "notes": "Rendered on a centered symmetric viewport. The sextic power makes the main body compact and emphasizes narrow satellite bulbs; log1p exposure shading preserves high-iteration boundary detail."
@@ -201,7 +351,16 @@
     "keyword": "septic-multibrot",
     "name": "Septic Multibrot",
     "tag": "fractal/multibrot",
-    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 80, "min-real": -1.2, "max-real": 1.2, "min-imaginary": -1.2, "max-imaginary": 1.2},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 80,
+      "min-real": -1.2,
+      "max-real": 1.2,
+      "min-imaginary": -1.2,
+      "max-imaginary": 1.2
+    },
     "formula": "z_{n+1} = z_n^7 + c, \\quad z_0 = 0",
     "summary": "The degree-7 Mandelbrot-family parameter set. Raising each orbit to the seventh power produces sixfold rotational structure, compact lobes, and fine tendrils around the escape boundary.",
     "notes": "Rendered on a centered symmetric viewport. The septic power tightens the main body and produces narrow satellite bulbs; log1p exposure shading preserves delicate high-iteration boundary filaments."
@@ -210,9 +369,36 @@
     "keyword": "octic-multibrot",
     "name": "Octic Multibrot",
     "tag": "fractal/multibrot",
-    "params": {"width": 1024, "height": 1024, "bailout": 500, "highest": 80, "min-real": -1.15, "max-real": 1.15, "min-imaginary": -1.15, "max-imaginary": 1.15},
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 80,
+      "min-real": -1.15,
+      "max-real": 1.15,
+      "min-imaginary": -1.15,
+      "max-imaginary": 1.15
+    },
     "formula": "z_{n+1} = z_n^8 + c, \\quad z_0 = 0",
     "summary": "The degree-8 Mandelbrot-family parameter set. Raising each orbit to the eighth power produces sevenfold rotational structure, compact lobes, and extremely fine tendrils around the escape boundary.",
     "notes": "Rendered on a centered symmetric viewport. The octic power tightens the main body further than lower-degree Multibrots; log1p exposure shading preserves thin satellite bulbs and high-iteration boundary filaments."
+  },
+  {
+    "keyword": "nonic-multibrot",
+    "name": "Nonic Multibrot",
+    "tag": "fractal/multibrot",
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 80,
+      "min-real": -1.1,
+      "max-real": 1.1,
+      "min-imaginary": -1.1,
+      "max-imaginary": 1.1
+    },
+    "formula": "z_{n+1} = z_n^9 + c, \\quad z_0 = 0",
+    "summary": "The degree-9 Mandelbrot-family parameter set. Raising each orbit to the ninth power produces eightfold rotational structure, compact lobes, and extremely fine tendrils around the escape boundary.",
+    "notes": "Rendered on a centered symmetric viewport. The nonic power tightens the main body and produces narrow satellite bulbs; log1p exposure shading preserves delicate high-iteration boundary filaments."
   }
 ]

@@ -15,7 +15,7 @@ z_{n+1} = z_n^9 + c, \quad z_0 = 0
 ```
 
 ## Mathematical Background
-The degree-9 Mandelbrot-family parameter set. Raising each orbit to the ninth power produces eightfold rotational structure, compact lobes, and extremely fine tendrils around the escape boundary.
+The Nonic Multibrot is the connectedness locus for the unicritical polynomial family `z \mapsto z^9 + c`. Degree-`d` Multibrots have `d - 1` rotational symmetry in the parameter plane, so the nonic case forms eight arms arranged around a compact central body. Compared with lower-degree Multibrots, the ninth power compresses the interior and pushes visible detail into very narrow satellite bulbs and exterior tendrils.
 
 ## Rendering Method
 Escape-time algorithm on CPU with 1024×1024 resolution.

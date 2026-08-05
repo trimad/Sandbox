@@ -15,7 +15,7 @@ z_{n+1} = z_n^10 + c, \quad z_0 = 0
 ```
 
 ## Mathematical Background
-The degree-10 Mandelbrot-family parameter set. Raising each orbit to the tenth power produces ninefold rotational structure, compact lobes, and extremely fine tendrils around the escape boundary.
+The Decic Multibrot is the connectedness locus for the unicritical polynomial family `z \mapsto z^10 + c`. Like other degree-`d` Multibrot sets, its parameter-plane symmetry is `d - 1`, so the degree-10 case arranges nine narrow arms around a compact central body. The higher power makes exterior escape bands rapidly thin out, which rewards a slightly tighter symmetric viewport than the quadratic Mandelbrot.
 
 ## Rendering Method
 Escape-time algorithm on CPU with 1024×1024 resolution.

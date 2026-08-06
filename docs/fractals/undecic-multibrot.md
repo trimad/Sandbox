@@ -15,7 +15,7 @@ z_{n+1} = z_n^11 + c, \quad z_0 = 0
 ```
 
 ## Mathematical Background
-The degree-11 Mandelbrot-family parameter set. Raising each orbit to the eleventh power produces tenfold rotational structure, compact lobes, and extremely fine tendrils around the escape boundary.
+For the Multibrot family `z -> z^d + c`, the parameter plane has `(d - 1)`-fold rotational symmetry around the origin. The undecic case (`d = 11`) therefore presents ten principal arms; using a tighter ±1.02 viewport keeps the compact high-degree body large enough to show its satellite bulbs and thin exterior filaments.
 
 ## Rendering Method
 Escape-time algorithm on CPU with 1024×1024 resolution.

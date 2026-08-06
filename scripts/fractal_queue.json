@@ -418,5 +418,23 @@
     "formula": "z_{n+1} = z_n^10 + c, \\quad z_0 = 0",
     "summary": "The degree-10 Mandelbrot-family parameter set. Raising each orbit to the tenth power produces ninefold rotational structure, compact lobes, and extremely fine tendrils around the escape boundary.",
     "notes": "Rendered on a centered symmetric viewport. The decic power further compacts the main body and produces narrow satellite bulbs; log1p exposure shading preserves delicate high-iteration boundary filaments."
+  },
+  {
+    "keyword": "undecic-multibrot",
+    "name": "Undecic Multibrot",
+    "tag": "fractal/multibrot",
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 80,
+      "min-real": -1.02,
+      "max-real": 1.02,
+      "min-imaginary": -1.02,
+      "max-imaginary": 1.02
+    },
+    "formula": "z_{n+1} = z_n^11 + c, \\quad z_0 = 0",
+    "summary": "The degree-11 Mandelbrot-family parameter set. Raising each orbit to the eleventh power produces tenfold rotational structure, compact lobes, and extremely fine tendrils around the escape boundary.",
+    "notes": "Rendered on a tight centered viewport. The undecic power further compacts the Multibrot body while producing ten narrow arms and high-iteration satellite filaments."
   }
 ]

@@ -436,5 +436,23 @@
     "formula": "z_{n+1} = z_n^11 + c, \\quad z_0 = 0",
     "summary": "The degree-11 Mandelbrot-family parameter set. Raising each orbit to the eleventh power produces tenfold rotational structure, compact lobes, and extremely fine tendrils around the escape boundary.",
     "notes": "Rendered on a tight centered viewport. The undecic power further compacts the Multibrot body while producing ten narrow arms and high-iteration satellite filaments."
+  },
+  {
+    "keyword": "duodecic-multibrot",
+    "name": "Duodecic Multibrot",
+    "tag": "fractal/multibrot",
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 80,
+      "min-real": -1.0,
+      "max-real": 1.0,
+      "min-imaginary": -1.0,
+      "max-imaginary": 1.0
+    },
+    "formula": "z_{n+1} = z_n^12 + c, \\quad z_0 = 0",
+    "summary": "The degree-12 Mandelbrot-family parameter set. Raising each orbit to the twelfth power produces elevenfold rotational structure, compact lobes, and extremely fine tendrils around the escape boundary.",
+    "notes": "Rendered on a tight centered viewport. The duodecic power keeps the main body compact while revealing eleven narrow arms, tiny satellite bulbs, and high-iteration boundary filaments under log1p exposure shading."
   }
 ]

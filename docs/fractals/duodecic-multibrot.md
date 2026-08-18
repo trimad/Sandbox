@@ -15,7 +15,7 @@ z_{n+1} = z_n^12 + c, \quad z_0 = 0
 ```
 
 ## Mathematical Background
-The degree-12 Mandelbrot-family parameter set. Raising each orbit to the twelfth power produces elevenfold rotational structure, compact lobes, and extremely fine tendrils around the escape boundary.
+The Duodecic Multibrot is the degree-12 member of the Multibrot family `z -> z^d + c`. For degree `d`, the parameter plane has `(d - 1)`-fold rotational symmetry, so this render emphasizes eleven repeating arms around the central component. Even degrees also make the image symmetric across both coordinate axes, which is why a square `[-1, 1] × [-1, 1]` viewport captures the primary structure cleanly.
 
 ## Rendering Method
 Escape-time algorithm on CPU with 1024×1024 resolution.

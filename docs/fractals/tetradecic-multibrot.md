@@ -15,7 +15,7 @@ z_{n+1} = z_n^14 + c, \quad z_0 = 0
 ```
 
 ## Mathematical Background
-The degree-14 Mandelbrot-family parameter set. Raising each orbit to the fourteenth power produces thirteenfold rotational structure, a very compact central body, and hairline tendrils around the escape boundary.
+A Multibrot set generalizes the Mandelbrot iteration by using \(z \mapsto z^d + c\) instead of the quadratic map. For integer degree \(d=14\), the parameter plane has \((d-1)=13\)-fold rotational symmetry: thirteen narrow arms radiate from a compact central body, with tiny satellite bulbs and very high-iteration filaments close to the unit disk. The tight ±0.96 viewport keeps those arms large enough to render cleanly at the daily 1024×1024 size.
 
 ## Rendering Method
 Escape-time algorithm on CPU with 1024×1024 resolution.

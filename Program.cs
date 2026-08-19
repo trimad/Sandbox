@@ -791,6 +791,11 @@ namespace Sandbox
                             .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
                         hasFractalData = false;
                         break;
+                    case "tetradecic-multibrot": //fractal
+                        fractal = new TetradecicMultibrot(settings.Width, settings.Height, settings.Bailout, settings.Highest)
+                            .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
+                        hasFractalData = false;
+                        break;
                     case "newton": //fractal
                         fractal = new NewtonFractal(settings.Width, settings.Height, settings.Highest, 3)
                             .Init(-1.5, 1.5, -1.5, 1.5);
@@ -1064,6 +1069,7 @@ namespace Sandbox
                         Console.WriteLine(String.Format("{0,-24} {1}", "undecic-multibrot", "Render the Undecic Multibrot / degree-11 Mandelbrot-family fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "duodecic-multibrot", "Render the Duodecic Multibrot / degree-12 Mandelbrot-family fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "tredecic-multibrot", "Render the Tredecic Multibrot / degree-13 Mandelbrot-family fractal"));
+                        Console.WriteLine(String.Format("{0,-24} {1}", "tetradecic-multibrot", "Render the Tetradecic Multibrot / degree-14 Mandelbrot-family fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "newton", "Render the Newton fractal (z^3-1)"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "celtic", "Render the Celtic Mandelbrot fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "perpendicular-mandelbrot", "Render the Perpendicular Mandelbrot fractal"));

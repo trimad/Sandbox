@@ -15,7 +15,7 @@ z_{n+1} = z_n^15 + c, \quad z_0 = 0
 ```
 
 ## Mathematical Background
-The degree-15 Mandelbrot-family parameter set. Raising each orbit to the fifteenth power produces fourteenfold rotational structure, a very compact central body, and hairline tendrils around the escape boundary.
+A Multibrot set replaces the quadratic Mandelbrot update with \(z \mapsto z^d + c\). For integer degree \(d=15\), the connectedness locus has \((d-1)=14\)-fold rotational symmetry, so the visible arms are narrower and closer to the unit disk than lower-degree examples. The tight ±0.94 viewport keeps the compact central body and hairline satellites legible at the daily render size.
 
 ## Rendering Method
 Escape-time algorithm on CPU with 1024×1024 resolution.

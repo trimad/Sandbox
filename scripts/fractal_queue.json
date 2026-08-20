@@ -490,5 +490,23 @@
     "formula": "z_{n+1} = z_n^14 + c, \\quad z_0 = 0",
     "summary": "The degree-14 Mandelbrot-family parameter set. Raising each orbit to the fourteenth power produces thirteenfold rotational structure, a very compact central body, and hairline tendrils around the escape boundary.",
     "notes": "Rendered on a tight centered viewport. The tetradecic power keeps the useful structure close to the unit disk while revealing thirteen narrow arms and high-iteration satellite filaments under log1p exposure shading."
+  },
+  {
+    "keyword": "quindecic-multibrot",
+    "name": "Quindecic Multibrot",
+    "tag": "fractal/multibrot",
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 80,
+      "min-real": -0.94,
+      "max-real": 0.94,
+      "min-imaginary": -0.94,
+      "max-imaginary": 0.94
+    },
+    "formula": "z_{n+1} = z_n^15 + c, \\quad z_0 = 0",
+    "summary": "The degree-15 Mandelbrot-family parameter set. Raising each orbit to the fifteenth power produces fourteenfold rotational structure, a very compact central body, and hairline tendrils around the escape boundary.",
+    "notes": "Rendered on a tight centered viewport. The quindecic power keeps the useful structure close to the unit disk while revealing fourteen narrow arms and high-iteration satellite filaments under log1p exposure shading."
   }
 ]

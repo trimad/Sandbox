@@ -15,7 +15,7 @@ z_{n+1} = z_n^16 + c, \quad z_0 = 0
 ```
 
 ## Mathematical Background
-The degree-16 Mandelbrot-family parameter set. Raising each orbit to the sixteenth power produces fifteenfold rotational structure, a very compact central body, and hairline tendrils around the escape boundary.
+Hexadecic Multibrot sets belong to the polynomial family `z ↦ z^d + c` with `d = 16`. A degree-`d` Multibrot parameter plane has `(d - 1)`-fold rotational symmetry, so this render shows fifteen narrow arms around a compact central body. As the degree increases, the connectedness locus tightens toward the unit disk and the exterior filaments become increasingly thin, making a tight viewport useful.
 
 ## Rendering Method
 Escape-time algorithm on CPU with 1024×1024 resolution.

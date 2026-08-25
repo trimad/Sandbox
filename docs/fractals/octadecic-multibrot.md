@@ -15,7 +15,7 @@ z_{n+1} = z_n^18 + c, \quad z_0 = 0
 ```
 
 ## Mathematical Background
-The degree-18 Mandelbrot-family parameter set. Raising each orbit to the eighteenth power produces seventeenfold rotational structure, a very compact central body, and hairline tendrils around the escape boundary.
+For the Multibrot family `z -> z^d + c`, the parameter plane has `(d - 1)`-fold rotational symmetry around the origin. The octadecic case (`d = 18`) therefore presents seventeen principal arms; using a tight ±0.88 viewport keeps the compact high-degree body large enough to show its satellite bulbs and hairline exterior filaments.
 
 ## Rendering Method
 Escape-time algorithm on CPU with 1024×1024 resolution.

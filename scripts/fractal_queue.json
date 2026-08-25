@@ -544,5 +544,23 @@
     "formula": "z_{n+1} = z_n^17 + c, \\quad z_0 = 0",
     "summary": "The degree-17 Mandelbrot-family parameter set. Raising each orbit to the seventeenth power produces sixteenfold rotational structure, a very compact central body, and hairline tendrils around the escape boundary.",
     "notes": "Rendered on a tight centered viewport. The heptadecic power keeps the useful structure close to the unit disk while revealing sixteen narrow arms and high-iteration satellite filaments under log1p exposure shading."
+  },
+  {
+    "keyword": "octadecic-multibrot",
+    "name": "Octadecic Multibrot",
+    "tag": "fractal/multibrot",
+    "params": {
+      "width": 1024,
+      "height": 1024,
+      "bailout": 500,
+      "highest": 80,
+      "min-real": -0.88,
+      "max-real": 0.88,
+      "min-imaginary": -0.88,
+      "max-imaginary": 0.88
+    },
+    "formula": "z_{n+1} = z_n^18 + c, \\quad z_0 = 0",
+    "summary": "The degree-18 Mandelbrot-family parameter set. Raising each orbit to the eighteenth power produces seventeenfold rotational structure, a very compact central body, and hairline tendrils around the escape boundary.",
+    "notes": "Rendered on a tight centered viewport. The octadecic power keeps the useful structure close to the unit disk while revealing seventeen narrow arms and high-iteration satellite filaments under log1p exposure shading."
   }
 ]

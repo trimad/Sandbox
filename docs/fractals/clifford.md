@@ -15,7 +15,7 @@ x_{n+1}=sin(a y_n)+c cos(a x_n); y_{n+1}=sin(b x_n)+d cos(b y_n)
 ```
 
 ## Mathematical Background
-Pickover-associated sine/cosine strange attractor density field.
+The Clifford attractor is a two-dimensional strange-attractor map popularized in Clifford Pickover-style visual explorations. Unlike escape-time Julia/Mandelbrot families, each iteration advances a point through a nonlinear sine/cosine recurrence; the image is a density field built from many visits to the plane. Small changes in the four coefficients can move the orbit between compact wisps, butterfly-like lobes, and more diffuse chaotic clouds.
 
 ## Rendering Method
 Escape-time algorithm on CPU with 384×384 resolution.
@@ -42,7 +42,8 @@ Escape-time algorithm on CPU with 384×384 resolution.
 ![Rendered on 2026-08-26](../../output/2026-08-26_clifford.png)
 
 ## Sources
-- Wikipedia: [Escape_time fractal](https://en.wikipedia.org/wiki/Escape-time_fractal)
+- Paul Bourke: [Clifford Attractors](https://paulbourke.net/fractals/clifford/) — formula and example coefficient sets.
+- Wikipedia: [Strange attractor](https://en.wikipedia.org/wiki/Attractor#Strange_attractor)
 
 ## Related Notes
 - [[mandelbrot]]

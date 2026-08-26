@@ -562,5 +562,129 @@
     "formula": "z_{n+1} = z_n^18 + c, \\quad z_0 = 0",
     "summary": "The degree-18 Mandelbrot-family parameter set. Raising each orbit to the eighteenth power produces seventeenfold rotational structure, a very compact central body, and hairline tendrils around the escape boundary.",
     "notes": "Rendered on a tight centered viewport. The octadecic power keeps the useful structure close to the unit disk while revealing seventeen narrow arms and high-iteration satellite filaments under log1p exposure shading."
+  },
+  {
+    "keyword": "pickover-biomorph",
+    "name": "Pickover Biomorph",
+    "tag": "fractal/biomorph",
+    "params": {
+      "width": 384,
+      "height": 384,
+      "min-real": -3,
+      "max-real": 3,
+      "min-imaginary": -3,
+      "max-imaginary": 3,
+      "bailout": 120,
+      "highest": 50
+    },
+    "formula": "z_{n+1}=sin(z_n)+e^{z_n}+c; component escape |Re(z)|>A or |Im(z)|>A",
+    "summary": "A Pickover-style biomorph using component escape rather than magnitude escape.",
+    "notes": "Novelty-first rare fractal target; rendered with log1p exposure."
+  },
+  {
+    "keyword": "popcorn",
+    "name": "Popcorn Fractal",
+    "tag": "fractal/dynamical-system",
+    "params": {
+      "width": 384,
+      "height": 384,
+      "min-real": -3,
+      "max-real": 3,
+      "min-imaginary": -3,
+      "max-imaginary": 3,
+      "bailout": 360,
+      "highest": 50
+    },
+    "formula": "x_{n+1}=x_n-h sin(y_n+tan(3y_n)); y_{n+1}=y_n-h sin(x_n+tan(3x_n))",
+    "summary": "Pickover Popcorn map rendered as an orbit-density histogram.",
+    "notes": "Uses h=0.05 and full-pixel seeding over [-3,3]^2."
+  },
+  {
+    "keyword": "clifford",
+    "name": "Clifford Attractor",
+    "tag": "fractal/strange-attractor",
+    "params": {
+      "width": 384,
+      "height": 384,
+      "bailout": 900,
+      "highest": 50
+    },
+    "formula": "x_{n+1}=sin(a y_n)+c cos(a x_n); y_{n+1}=sin(b x_n)+d cos(b y_n)",
+    "summary": "Pickover-associated sine/cosine strange attractor density field.",
+    "notes": "Preset a=-1.4,b=1.6,c=1.0,d=0.7."
+  },
+  {
+    "keyword": "hopalong",
+    "name": "Hopalong Attractor",
+    "tag": "fractal/hopalong",
+    "params": {
+      "width": 384,
+      "height": 384,
+      "bailout": 900,
+      "highest": 50
+    },
+    "formula": "x_{n+1}=y_n-sgn(x_n)sqrt(|b x_n-c|); y_{n+1}=a-x_n",
+    "summary": "Barry Martin Hopalong attractor rendered as a density field.",
+    "notes": "Preset a=-2.0,b=-0.33,c=0.01."
+  },
+  {
+    "keyword": "gumowski-mira",
+    "name": "Gumowski-Mira Attractor",
+    "tag": "fractal/dynamical-system",
+    "params": {
+      "width": 384,
+      "height": 384,
+      "bailout": 900,
+      "highest": 50
+    },
+    "formula": "x_{n+1}=y_n+b(1-0.05y_n^2)y_n+f(x_n); y_{n+1}=-x_n+f(x_{n+1})",
+    "summary": "Nonlinear Gumowski-Mira map rendered as a phase-plane density attractor.",
+    "notes": "Preset a=0.008,b=0.05, seed near (10,0)."
+  },
+  {
+    "keyword": "ikeda",
+    "name": "Ikeda Map",
+    "tag": "fractal/physics",
+    "params": {
+      "width": 384,
+      "height": 384,
+      "bailout": 900,
+      "highest": 50
+    },
+    "formula": "x_{n+1}=1+u(x_n cos t_n-y_n sin t_n); y_{n+1}=u(x_n sin t_n+y_n cos t_n)",
+    "summary": "Nonlinear optical-resonator chaotic map with a spiral strange attractor.",
+    "notes": "Preset u=0.918."
+  },
+  {
+    "keyword": "tinkerbell",
+    "name": "Tinkerbell Map",
+    "tag": "fractal/chaotic-map",
+    "params": {
+      "width": 384,
+      "height": 384,
+      "bailout": 900,
+      "highest": 50
+    },
+    "formula": "x_{n+1}=x_n^2-y_n^2+a x_n+b y_n; y_{n+1}=2x_ny_n+c x_n+d y_n",
+    "summary": "Compact polynomial chaotic map with winglike attractor.",
+    "notes": "Preset a=0.9,b=-0.6013,c=2.0,d=0.5."
+  },
+  {
+    "keyword": "kleinian-inversion",
+    "name": "Kleinian Inversion Limit Set",
+    "tag": "fractal/kleinian",
+    "params": {
+      "width": 384,
+      "height": 384,
+      "min-real": -2.5,
+      "max-real": 2.5,
+      "min-imaginary": -2.5,
+      "max-imaginary": 2.5,
+      "bailout": 160,
+      "highest": 50
+    },
+    "formula": "circle inversion z -> 1/conj(z), with repeated fold/inversion/translation",
+    "summary": "Kleinian/Schottky-inspired circle-inversion field; stepping stone to full group-word limit sets.",
+    "notes": "Exploratory inversion proxy, not yet a full Indra Pearls renderer."
   }
 ]

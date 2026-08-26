@@ -851,6 +851,46 @@ namespace Sandbox
                             .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
                         hasFractalData = false;
                         break;
+                    case "pickover-biomorph": //fractal
+                        fractal = new PickoverBiomorph(settings.Width, settings.Height, settings.Bailout, settings.Highest)
+                            .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
+                        hasFractalData = false;
+                        break;
+                    case "popcorn": //fractal
+                        fractal = new PopcornFractal(settings.Width, settings.Height, settings.Bailout, settings.Highest)
+                            .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
+                        hasFractalData = false;
+                        break;
+                    case "clifford": //fractal
+                        fractal = new CliffordAttractor(settings.Width, settings.Height, settings.Bailout, settings.Highest)
+                            .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
+                        hasFractalData = false;
+                        break;
+                    case "hopalong": //fractal
+                        fractal = new HopalongAttractor(settings.Width, settings.Height, settings.Bailout, settings.Highest)
+                            .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
+                        hasFractalData = false;
+                        break;
+                    case "gumowski-mira": //fractal
+                        fractal = new GumowskiMiraAttractor(settings.Width, settings.Height, settings.Bailout, settings.Highest)
+                            .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
+                        hasFractalData = false;
+                        break;
+                    case "ikeda": //fractal
+                        fractal = new IkedaAttractor(settings.Width, settings.Height, settings.Bailout, settings.Highest)
+                            .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
+                        hasFractalData = false;
+                        break;
+                    case "tinkerbell": //fractal
+                        fractal = new TinkerbellAttractor(settings.Width, settings.Height, settings.Bailout, settings.Highest)
+                            .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
+                        hasFractalData = false;
+                        break;
+                    case "kleinian-inversion": //fractal
+                        fractal = new KleinianInversionLimitSet(settings.Width, settings.Height, settings.Bailout, settings.Highest)
+                            .Init(settings.MinReal, settings.MaxReal, settings.MinImaginary, settings.MaxImaginary);
+                        hasFractalData = false;
+                        break;
                     case "load":
                         fractal.LoadSettings("settings.json").LoadDistance("distance.dat").LoadExposure("exposure.dat").TryLoadFlow("flow.dat");
 
@@ -1101,6 +1141,14 @@ namespace Sandbox
                         Console.WriteLine(String.Format("{0,-24} {1}", "magnet1", "Render the Magnet Type I rational-map fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "magnet2", "Render the Magnet Type II rational-map fractal"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "phoenix", "Render the Phoenix fractal"));
+                        Console.WriteLine(String.Format("{0,-24} {1}", "pickover-biomorph", "Render a Pickover biomorph component-escape fractal"));
+                        Console.WriteLine(String.Format("{0,-24} {1}", "popcorn", "Render Pickover's Popcorn dynamical-system fractal"));
+                        Console.WriteLine(String.Format("{0,-24} {1}", "clifford", "Render a Clifford strange attractor density map"));
+                        Console.WriteLine(String.Format("{0,-24} {1}", "hopalong", "Render Barry Martin's Hopalong attractor"));
+                        Console.WriteLine(String.Format("{0,-24} {1}", "gumowski-mira", "Render the Gumowski-Mira nonlinear attractor"));
+                        Console.WriteLine(String.Format("{0,-24} {1}", "ikeda", "Render the Ikeda optical-resonator attractor"));
+                        Console.WriteLine(String.Format("{0,-24} {1}", "tinkerbell", "Render the Tinkerbell chaotic map attractor"));
+                        Console.WriteLine(String.Format("{0,-24} {1}", "kleinian-inversion", "Render a Kleinian/Schottky-inspired circle-inversion limit set"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "logisticmap", "Render the logistic map"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "render/load/save/draw", "Core pipeline commands"));
                         Console.WriteLine(String.Format("{0,-24} {1}", "all", "Render or load once, then save every shader output"));
